@@ -4,8 +4,8 @@
 - Edit RegistraionController To be able to save the new users avatars:white_check_mark:
 - Include Admin LTE 3 Template and Customize it :white_check_mark:
 - Create Profile Page :white_check_mark:
-- Go to Profile By Clicking On User Name :black_square_button:
-- Create Users Mangemnet Page That can make CURD on Users and make search :black_square_button:
+- Go to Profile By Clicking On User Name :white_check_mark:
+- Create Users Mangemnet Page That can make CURD on Users and make search :white_check_mark:
 
 
 

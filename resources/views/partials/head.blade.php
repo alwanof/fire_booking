@@ -6,6 +6,7 @@
 
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/toastr/toastr.min.css')}}">
 <!-- Theme style -->
 <link rel="stylesheet" href="{{asset('dist/css/adminlte.min.css')}}">
 <!-- Google Font: Source Sans Pro -->

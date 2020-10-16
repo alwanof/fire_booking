@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">{{__('Profile')}}</h3>
+          <h3 class="card-title">{{__('Create User')}}</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -22,34 +22,28 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" enctype="multipart/form-data" action="{{route('users.update', $user)}}">
+            <form method="post" enctype="multipart/form-data" action="{{ route('users.store') }}">
             {{ csrf_field() }}
-            {{ method_field('patch') }}
           <div class="form-group">
             <label for="inputName">{{__('Full Name')}}</label>
-            <input type="text" name="name" class="form-control" value="{{$user->name}}">
+            <input type="text" name="name" class="form-control" placeholder="{{__('Full Name')}}">
           </div>
           <div class="form-group">
             <label for="inputName">{{__('Email')}}</label>
-            <input type="text" name="email" class="form-control" disabled value="{{$user->email}}">
+            <input type="text" name="email" class="form-control" placeholder="{{__('Email')}}" >
           </div>
           <div class="form-group">
-            <label for="inputName">{{__('Old Password')}}</label>
-            <input type="password" name="old_password" class="form-control" value="{{$user->password}}">
+            <label for="inputName">{{__('Password')}}</label>
+            <input type="password" name="password" class="form-control" placeholder="{{__('Password')}}">
           </div>
           <div class="form-group">
-            <label for="inputName">{{__('New Password')}}</label>
-            <input type="password" name="password" class="form-control" value="">
-          </div>
-          <div class="form-group">
-            <label for="inputName">{{__('New Password (Confirm)')}}</label>
-            <input type="password" name="password_confirmation" class="form-control" value="">
+            <label for="inputName">{{__('Password (Confirm)')}}</label>
+            <input type="password" name="password_confirmation" class="form-control" placeholder="{{__('Password (Confirm)')}}">
           </div>
 
           <div class="form-group">
             <label for="inputName">{{__('Avatar')}}</label>
-            <input type="file" name="avatar" class="form-control" value="">
-          <img src="{{$user->avatar}}" width="10%" class="img-thumbnail" alt="">
+            <input type="file" name="avatar" class="form-control">
         </div>
           <div class="form-group">
             <a href="{{route('home')}}" class="btn btn-secondary">Cancel</a>
