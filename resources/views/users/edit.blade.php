@@ -45,6 +45,15 @@
             <label for="inputName">{{__('New Password (Confirm)')}}</label>
             <input type="password" name="password_confirmation" class="form-control" value="">
           </div>
+          <div class="form-group">
+            <label for="inputName">{{__('Role')}}</label>
+            <select class="form-control" name="role" id="">
+              <option value="">{{__('Grant Role')}}</option>
+                @foreach (Spatie\Permission\Models\Role::all() as $role)
+              <option value="{{$role->id}}" @if($user->getRoleNames()[0] == $role->name) selected @endif >{{__($role->name)}}</option>
+                @endforeach
+            </select>
+          </div>
 
           <div class="form-group">
             <label for="inputName">{{__('Avatar')}}</label>
@@ -52,8 +61,8 @@
           <img src="{{$user->avatar}}" width="10%" class="img-thumbnail" alt="">
         </div>
           <div class="form-group">
-            <a href="{{route('home')}}" class="btn btn-secondary">Cancel</a>
-            <input type="submit" value="Save Changes" class="btn btn-success float-right">
+            <a href="{{route('home')}}" class="btn btn-secondary">{{__('Cancel')}}</a>
+            <input type="submit" value="{{__('Save Changes')}}" class="btn btn-success float-right">
           </div>
         </form>
         </div>

@@ -5,16 +5,10 @@
     <div class="col-12">
         <div class="card">
           <div class="card-header">
-            <h3 class="card-title">{{__('Users Managment')}}</h3>
+            <h3 class="card-title">{{__('Roles Managment')}}</h3>
 
             <div class="card-tools">
-              <div class="input-group input-group-sm" style="width: 150px;">
-                <input type="text" name="table_search" id="table_search" onkeyup="search()" class="form-control float-right" placeholder="{{__('Search By Email')}}">
-
-                <div class="input-group-append">
-                  <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                </div>
-              </div>
+              
             </div>
           </div>
           <!-- /.card-header -->
@@ -23,9 +17,8 @@
                 <thead>
                     <tr>
                     <th>#</th>
-                    <th>{{__('Full Name')}}</th>
-                    <th>{{__('Email')}}</th>
-                    <th>{{__('Role')}}</th>
+                    <th>{{__('Role Name')}}</th>
+                    <th>{{__('Guard Name')}}</th>
                     <th>{{__('Options')}}</th>
                     </tr>
                 </thead>
@@ -33,23 +26,25 @@
                     @php
                         $i=0;   
                     @endphp
-                    @foreach ($users as $user)
+                    @foreach ($roles as $role)
                     @php
                         $i++    
                     @endphp
-                        <tr id="#user{{$user->id}}">
+                        <tr id="#user{{$role->id}}">
                             <td>{{$i}}</td>
-                            <td>{{$user->name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td><span class="badge badge-success">{{$user->getRoleNames()[0]}}</span></td>
-                            <td>
-                              @can('Manage Model')
-                              <div class="btn-group">
-                                <a type="button" href="{{route('users.edit',$user->id)}}" class="btn btn-warning"><i class="fas fa-user-edit"></i></a>
-                                <button type="button" onclick="delete_user({{$user->id}})" class="btn btn-danger"><i class="fas fa-user-times"></i></button>
-                              </div>7
-                              @endcan
-                            </td>
+                            <td>{{$role->name}}</td>
+                            <td>{{$role->guard_name}}</td>
+                            <td><div class="btn-group">
+                              <a type="button" href="{{route('roles.edit',$role->id)}}" class="btn btn-warning"><i class="fas fa-cogs"></i></a>
+                              @if($role->id != config('permission.default_role_id'))
+                              <form action="{{route('roles.delete',$role->id)}}" method="post">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                  <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                </form>
+                                @endif
+                                
+                              </div></td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -58,7 +53,7 @@
           <div class="card-footer">
                 <div class="row">
                     <div class="col-12">
-                        {{$users->links()}}
+                     
                     </div>
                 </div>
           </div>
@@ -113,17 +108,7 @@
                 }
             }
         }
-        function delete_user(id) {
-            $.ajax({
-                url:"/Users/delete_user/"+id,
-                type:"POST",
-                data:{"_token":"{{ csrf_token() }}"},
-                success:function(data){showToast('bg-success','{{__("User Deleted")}}','','{{__("The User Has Been Deleted Successfully")}}')},
-                error : function(error){showToast('bg-danger','{{__("Error")}}','','{{__("Something Wrong !")}}')}
-            });
-            tr = document.getElementById("#user"+id);
-            tr.remove();
-        }
+        
     </script>
 
 

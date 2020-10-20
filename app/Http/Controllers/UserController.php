@@ -8,7 +8,7 @@ use Auth ;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
+use Spatie\Permission\Models\Role;
 class UserController extends Controller
 {
     public function __construct()
@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function update(User $user,Request $request)
     { 
-
+        
         $user->name = $request->name;
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
@@ -41,8 +41,12 @@ class UserController extends Controller
             $user->avatar =  asset('/uploads/avatars/'. $filename);
             }
 
-        $user->save();
-        return back();
+            if($user->save()){
+                $role = $request->role;
+                $user->syncRoles($role);
+                return back();
+            }
+           
     }
 
     public function index()

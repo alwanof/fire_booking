@@ -31,20 +31,63 @@
                 </p>
               </a>
               <ul class="nav nav-treeview">
+                @can('View User')
                 <li class="nav-item">
                   <a href="{{route('users.all')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>{{__('Users Managment')}}</p>
                   </a>
                 </li>
+                @endcan
+                
+                @can('Manage User')
                 <li class="nav-item">
                   <a href="{{route('users.create')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
                     <p>{{__('Create User')}}</p>
                   </a>
+                </li>      
+                @endcan     
+                @can('View Role')
+                <li class="nav-item">
+                  <a href="{{route('roles.index')}}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>{{__('Roles Managment')}}</p>
+                  </a>
                 </li>
+                @endcan       
                 
+                @can('Manage Role')
+                <li class="nav-item">
+                  <a href="{{route('roles.create')}}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>{{__('Create Role')}}</p>
+                  </a>
+                </li>
+                @endcan
+                @can('View Permission')
+                <li class="nav-item">
+                  <a href="{{route('permissions.index')}}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>{{__('Permissions Managment')}}</p>
+                  </a>
+                </li>
+                @endcan
+                @can('Manage Permission')
+                <li class="nav-item">
+                  <a href="{{route('permissions.create')}}" class="nav-link ">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>{{__('Create Permission')}}</p>
+                  </a>
+                </li>
+                @endcan
               </ul>
+            </li>
+            <li class="nav-item">
+              <a href="{{route('languages.index')}}" class="nav-link ">
+                <i class="nav-icon fas fa-globe"></i>
+                <p>{{__('Language Managment')}}</p>
+              </a>
             </li>
             
           </ul>

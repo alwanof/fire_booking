@@ -7,14 +7,7 @@
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 <script src="{{asset('plugins/toastr/toastr.min.js')}}"></script>
-<script>
-    function showToast(Class,Title,Subtitle,Body){
-        $(document).Toasts('create', {
-        class:Class , 
-        title:Title ,
-        subtitle:Subtitle ,
-        body: Body
-      })
-    }
-</script>
+
+<script src="{{asset('js/script.js')}}"></script>
+
 @yield('script')

@@ -5,7 +5,7 @@
     <div class="col-md-12">
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">{{__('Create User')}}</h3>
+          <h3 class="card-title">{{__('Edit Permission')}}</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -22,29 +22,24 @@
                     </ul>
                 </div>
             @endif
-            <form method="post" enctype="multipart/form-data" action="{{ route('users.store') }}">
+            <form method="post" enctype="multipart/form-data" action="{{route('permissions.update',$permission->id)}}">
             {{ csrf_field() }}
+            {{ method_field('patch') }}
           <div class="form-group">
-            <label for="inputName">{{__('Full Name')}}</label>
-            <input type="text" name="name" class="form-control" placeholder="{{__('Full Name')}}">
-          </div>
-          <div class="form-group">
-            <label for="inputName">{{__('Email')}}</label>
-            <input type="text" name="email" class="form-control" placeholder="{{__('Email')}}" >
-          </div>
-          <div class="form-group">
-            <label for="inputName">{{__('Password')}}</label>
-            <input type="password" name="password" class="form-control" placeholder="{{__('Password')}}">
-          </div>
-          <div class="form-group">
-            <label for="inputName">{{__('Password (Confirm)')}}</label>
-            <input type="password" name="password_confirmation" class="form-control" placeholder="{{__('Password (Confirm)')}}">
+            <label for="inputName">{{__('Permission Name')}}</label>
+            <input type="text" name="name" class="form-control" value="{{$permission->name}}" required>
           </div>
 
           <div class="form-group">
-            <label for="inputName">{{__('Avatar')}}</label>
-            <input type="file" name="avatar" class="form-control">
-        </div>
+          <label for="">{{__('Guard Name')}}</label>
+          <select class="form-control" name="guard_name" id="" required>
+              <option value="">{{__('Select Guard')}}</option>
+              @foreach (config('auth.guards') as $guard => $value)                  
+              <option value="{{$guard}}" @if($guard === $permission->guard_name) selected @endif>{{strtoupper(__($guard))}}</option>
+              @endforeach
+          </select>
+          </div>
+         
           <div class="form-group">
             <a href="{{route('home')}}" class="btn btn-secondary">{{__('Cancel')}}</a>
             <input type="submit" value="{{__('Save Changes')}}" class="btn btn-success float-right">
