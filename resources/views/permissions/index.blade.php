@@ -8,7 +8,7 @@
             <h3 class="card-title">{{__('Permissions Managment')}}</h3>
 
             <div class="card-tools">
-              
+
             </div>
           </div>
           <!-- /.card-header -->
@@ -18,22 +18,22 @@
                     <tr>
                     <th>#</th>
                     <th>{{__('Permission Name')}}</th>
-                    
+
                     <th>{{__('Options')}}</th>
                     </tr>
                 </thead>
                 <tbody>
                     @php
-                        $i=0;   
+                        $i=0;
                     @endphp
                     @foreach ($permissions as $permission)
                     @php
-                        $i++    
+                        $i++
                     @endphp
                         <tr id="#user{{$permission->id}}">
                             <td>{{$i}}</td>
                             <td>{{$permission->name}}</td>
-                           
+
                             <td><div class="btn-group">
                                 <a type="button" href="{{route('permissions.edit',$permission->id)}}" class="btn btn-warning"><i class="fas fa-cogs"></i></a>
                                 <form action="{{route('permissions.delete',$permission->id)}}" method="post">
@@ -50,7 +50,7 @@
           <div class="card-footer">
                 <div class="row">
                     <div class="col-12">
-                     
+
                     </div>
                 </div>
           </div>
@@ -59,28 +59,7 @@
         <!-- /.card -->
       </div>
 </div>
-<div class="modal fade" id="modal-sm">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Small Modal</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-      <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
+
 @endsection
 @section('script')
     <script>
@@ -91,9 +70,9 @@
             filter = input.value.toUpperCase();
             table = document.getElementById("users_table");
             tr = table.getElementsByTagName("tr");
-                
+
             // Search By Email
-            for (i = 0; i < tr.length; i++) { 
+            for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[2];
                 if (td) {
                     txtValue = td.textContent || td.innerText;
@@ -105,7 +84,7 @@
                 }
             }
         }
-        
+
     </script>
 
 

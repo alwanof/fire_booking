@@ -38,6 +38,10 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+          'name' => ['required', 'string']
+
+      ]);
         // return $request->all();
         $role = Role::create(['name' => $request->name]);
         foreach ($request->roles as $permission_id) {
@@ -80,10 +84,14 @@ class RoleController extends Controller
      */
     public function update(Request $request, Role $role)
     {
+      $request->validate([
+          'name' => ['required', 'string']
+
+      ]);
         $role->name = $request->name;
         $new_per = [];
         foreach($request->roles as $permission_id){
-            $new_per[] =$permission_id; 
+            $new_per[] =$permission_id;
         }
         $role->syncPermissions($new_per);
         if($role->save()){

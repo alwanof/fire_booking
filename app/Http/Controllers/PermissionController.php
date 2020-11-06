@@ -37,6 +37,11 @@ class PermissionController extends Controller
      */
     public function store(Request $request)
     {
+      $request->validate([
+          'guard_name' => ['required', 'string', 'max:255'],
+          'name' => ['required', 'string']
+
+      ]);
         $permission = Permission::create(['guard_name' => $request->gurad_name, 'name' => $request->name]);
         return redirect()->route('permissions.index');
     }
@@ -72,6 +77,11 @@ class PermissionController extends Controller
      */
     public function update(Request $request, Permission $permission)
     {
+      $request->validate([
+          'guard_name' => ['required', 'string', 'max:255'],
+          'name' => ['required', 'string']
+
+      ]);
          $permission->guard_name = $request->guard_name;
          $permission->name = $request->name;
          if($permission->save()){
@@ -88,8 +98,8 @@ class PermissionController extends Controller
     public function destroy($id)
     {
         $permission = Permission::find($id);
- 
-        
+
+
         if($permission->delete()){
             return redirect()->back();
         }

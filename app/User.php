@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'avatar'
+        'name','username', 'email', 'password', 'avatar'
     ];
 
     /**
@@ -40,4 +40,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function UserModels()
+    {
+      return $this->hasMany(UserModel::class);
+    }
+    public function Categories()
+    {
+      return $this->hasMany(Category::class);
+    }
+
+
+    public function GetAvilableConfig()
+    {
+        return $this->roles->first()->configurations()->get();
+    }
 }

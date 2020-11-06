@@ -13,18 +13,10 @@
           </div>
         </div>
         <div class="card-body">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+
             <form method="post" enctype="multipart/form-data" action="{{route('permissions.store')}}">
             {{ csrf_field() }}
-    
+
           <div class="form-group">
             <label for="inputName">{{__('Permission Name')}}</label>
             <input type="text" name="name" class="form-control" value="" required>
@@ -34,25 +26,25 @@
           <label for="">{{__('Guard Name')}}</label>
           <select class="form-control" name="guard_name" id="" required>
               <option value="">{{__('Select Guard')}}</option>
-              @foreach (config('auth.guards') as $guard => $value)                  
+              @foreach (config('auth.guards') as $guard => $value)
               <option value="">{{strtoupper(__($guard))}}</option>
               @endforeach
           </select>
           </div>
-         
+
           <div class="form-group">
             <a href="{{route('home')}}" class="btn btn-secondary">{{__('Cancel')}}</a>
-            <input type="submit" value="{{__('Save Changes')}}" class="btn btn-success float-right">
+          <button type="submit" class="btn btn-success float-right" name="button">{{__('Save Changes')}}</button>
           </div>
         </form>
         </div>
-       
-            
-         
+
+
+
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
     </div>
-   
+
   </div>
 @endsection

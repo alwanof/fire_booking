@@ -52,3 +52,21 @@ Route::group(['prefix'=>'Language','middleware'=>'auth'],function ()
     Route::get('/translate/{language}','LanguageController@translate')->name('languages.translate');
     Route::post('/translate/{language}','LanguageController@update')->name('languages.translate.store');
 });
+// Route::resources([
+//     'photos' => PhotoController::class,
+//     'posts' => PostController::class,
+// ]);
+Route::resources([
+    'configurations' => ConfigurationController::class,
+    'settings' => SettingController::class,
+    'category' => CategoryController::class,
+    'model' => UserModelController::class,
+    'services' => ServiceController::class,
+]);
+Route::post('/services/TimeSchemaCreator','ServiceController@TimeSchemaCreator');
+Route::get('/services/getDates/{service}','ServiceController@getDates');
+Route::get('/services/getModels/{id}','ServiceController@getModels');
+Route::get('/services/getTimes/{service}/{date}','ServiceController@getTimes');
+Route::get('models/getServices/{UserModel}','UserModelController@getServices');
+Route::get('/provider/{username}','HomeController@provider');
+Route::post('/provider/{username}/reservation','HomeController@reservation')->name('customer.reservation');

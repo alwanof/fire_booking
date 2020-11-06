@@ -43,11 +43,11 @@
                             <td>{{$user->email}}</td>
                             <td><span class="badge badge-success">{{$user->getRoleNames()[0]}}</span></td>
                             <td>
-                              @can('Manage Model')
+                              @can('Manage User')
                               <div class="btn-group">
                                 <a type="button" href="{{route('users.edit',$user->id)}}" class="btn btn-warning"><i class="fas fa-user-edit"></i></a>
                                 <button type="button" onclick="delete_user({{$user->id}})" class="btn btn-danger"><i class="fas fa-user-times"></i></button>
-                              </div>7
+                              </div>
                               @endcan
                             </td>
                         </tr>

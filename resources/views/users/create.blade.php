@@ -45,19 +45,28 @@
             <label for="inputName">{{__('Avatar')}}</label>
             <input type="file" name="avatar" class="form-control">
         </div>
+        <div class="form-group">
+          <label for="inputName">{{__('Role')}}</label>
+          <select class="form-control" name="role" id="">
+            <option value="">{{__('Grant Role')}}</option>
+              @foreach (Spatie\Permission\Models\Role::all() as $role)
+            <option value="{{$role->id}}" >{{__($role->name)}}</option>
+              @endforeach
+          </select>
+        </div>
           <div class="form-group">
             <a href="{{route('home')}}" class="btn btn-secondary">{{__('Cancel')}}</a>
             <input type="submit" value="{{__('Save Changes')}}" class="btn btn-success float-right">
           </div>
         </form>
         </div>
-       
-            
-         
+
+
+
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
     </div>
-   
+
   </div>
 @endsection

@@ -13,21 +13,12 @@
           </div>
         </div>
         <div class="card-body">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <form method="post" enctype="multipart/form-data" action="{{route('roles.store')}}">
             {{ csrf_field() }}
-    
+
           <div class="form-group">
             <label for="inputName">{{__('Role Name')}}</label>
-            <input type="text" name="name" class="form-control" value="">
+            <input type="text" name="name" class="form-control" value="" required>
           </div>
           <hr>
           <legend>{{__('Permissions')}}</legend>
@@ -37,29 +28,29 @@
               <div class="col-3">
                 <div class="form-group">
                     <label class="">
-                        
-                     <input type="checkbox"  name="roles[]" value="{{$permission->id}}">
+
+                     <input type="checkbox"  name="roles[]" value="{{$permission->id}}" required>
                         {{strtoupper(__($permission->name))}}
                     </label>
                   </div>
               </div>
               @endforeach
             </div>
-              
+
           </div>
           <div class="form-group">
             <a href="{{route('home')}}" class="btn btn-secondary">{{__('Cancel')}}</a>
-            <input type="submit" value="{{__('Save Changes')}}" class="btn btn-success float-right">
+            <button type="submit" class="btn btn-success float-right" name="button">{{__('Save Changes')}}</button>
           </div>
         </form>
         </div>
-       
-            
-         
+
+
+
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
     </div>
-   
+
   </div>
 @endsection

@@ -17,17 +17,17 @@ class UserController extends Controller
     }
 
     public function profile(User $user)
-    {   
+    {
         return view('users.profile', compact('user'));
     }
     public function edit(User $user)
-    {   
+    {
         return view('users.edit', compact('user'));
     }
 
     public function update(User $user,Request $request)
-    { 
-        
+    {
+
         $user->name = $request->name;
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
@@ -46,7 +46,7 @@ class UserController extends Controller
                 $user->syncRoles($role);
                 return back();
             }
-           
+
     }
 
     public function index()
@@ -79,8 +79,10 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'avatar'=> asset('/uploads/avatars/'. $filename),
         ]);
-        
+
 
         return redirect()->route('users.all');
     }
+
+    
 }
