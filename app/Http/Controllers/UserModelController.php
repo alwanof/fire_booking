@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\UserModel;
+use App\UserModelImage;
 use App\Category;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
-
+use Mail;
 class UserModelController extends Controller
 {
     /**
@@ -29,7 +30,7 @@ class UserModelController extends Controller
     public function create()
     {
 
-       return timeAvalibality(1,"1970-01-01 03:15:00");
+
 
     }
     public function getServices($userModel)
@@ -61,12 +62,24 @@ class UserModelController extends Controller
       $model->avatar = "no avatar";
       if ($model->save()) {
         if($request->hasfile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = "UM-".$model->id."-".time() . '.' . $avatar->getClientOriginalExtension();
-            $path  = public_path('/uploads/models/' . $filename);
-            $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save( $path );
-            $model->avatar =  asset('/uploads/models/'. $filename);
-            $model->save();
+            // $avatar = $request->file('avatar');
+            // $filename = "UM-".$model->id."-".time() . '.' . $avatar->getClientOriginalExtension();
+            // $path  = public_path('/uploads/models/' . $filename);
+            // $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save( $path );
+            // $model->avatar =  asset('/uploads/models/'. $filename);
+            // $model->save();
+            $a=1;
+            foreach ($request->avatar as $key => $photo) {
+                $userModelImage = new UserModelImage ;
+                $userModelImage->user_model_id = $userModel->id;
+                $MimeType = explode ("/",$photo->getMimeType());
+                $filename = "UM-".$userModel->id."-".time(). '-'.$a.'.' . $MimeType[1];
+                $path  = public_path('/uploads/models/' . $filename);
+                $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
+                $userModelImage->path = asset('/uploads/models/'. $filename);
+                $userModelImage->save();
+                $a++;
+            }
             }
             return redirect()->back();
       }
@@ -107,6 +120,13 @@ class UserModelController extends Controller
     {
         //
         $userModel =  UserModel::find($id);
+        $userModel->category_id = $request->category_id;
+
+        if($userModel->images->count() != 0){
+        foreach ($userModel->images as $image) {
+          $image->delete();
+          }
+        }
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'bio' => ['required', 'string'],
@@ -114,11 +134,19 @@ class UserModelController extends Controller
           $userModel->title = $request->title;
           $userModel->bio = $request->bio;
           if($request->hasfile('avatar')){
-              $avatar = $request->file('avatar');
-              $filename = "UM-".$userModel->id."-".time() . '.' . $avatar->getClientOriginalExtension();
-              $path  = public_path('/uploads/models/' . $filename);
-              $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save( $path );
-              $userModel->avatar =  asset('/uploads/models/'. $filename);
+
+            $a=1;
+            foreach ($request->avatar as $key => $photo) {
+                $userModelImage = new UserModelImage ;
+                $userModelImage->user_model_id = $userModel->id;
+                $MimeType = explode ("/",$photo->getMimeType());
+                $filename = "UM-".$userModel->id."-".time(). '-'.$a.'.' . $MimeType[1];
+                $path  = public_path('/uploads/models/' . $filename);
+                $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
+                $userModelImage->path = asset('/uploads/models/'. $filename);
+                $userModelImage->save();
+                $a++;
+            }
               }
           if($userModel->save()){
             return redirect()->route('model.index');

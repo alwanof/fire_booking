@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\CategoryImage;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic as Image;
 use Validator;
@@ -48,15 +49,30 @@ class CategoryController extends Controller
       $category = new Category;
       $category->title = $request->title;
       $category->description = $request->description;
+      $category->video = $request->video;
       $category->avatar = "no avatar";
       if ($category->save()) {
         if($request->hasfile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = "C-".$category->id."-".time() . '.' . $avatar->getClientOriginalExtension();
-            $path  = public_path('/uploads/categories/' . $filename);
-            $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save( $path );
-            $category->avatar =  asset('/uploads/categories/'. $filename);
-            $category->save();
+            // $avatar = $request->file('avatar');
+            // $filename = "C-".$category->id."-".time() . '.' . $avatar->getClientOriginalExtension();
+            // $path  = public_path('/uploads/categories/' . $filename);
+            // $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save( $path );
+            // $category->avatar =  asset('/uploads/categories/'. $filename);
+            // $category->save();
+            $a=1;
+                foreach ($request->avatar as $key => $photo) {
+                    $category_image = new CategoryImage ;
+                    $category_image->category_id = $category->id;
+                    $MimeType = explode ("/",$photo->getMimeType());
+                    $filename = "C-".$category->id."-".time() . '-'.$a.'.' . $MimeType[1];
+                    $path  = public_path('/uploads/categories/' . $filename);
+                    $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
+                    $category_image->path = asset('/uploads/categories/'. $filename);
+                    $category_image->save();
+                    $a++;
+                }
+            }else {
+              // echo "no p";
             }
             return redirect()->back();
       }
@@ -95,18 +111,35 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
+      if($category->Images->count() != 0){
+      foreach ($category->Images as $image) {
+        // code...
+        $image->delete();
+      }
+      }
       $request->validate([
           'title' => ['required', 'string', 'max:255'],
           'description' => ['required', 'string'],
       ]);
         $category->title = $request->title;
         $category->description = $request->description;
+        $category->video = $request->video;
         if($request->hasfile('avatar')){
-            $avatar = $request->file('avatar');
-            $filename = "C-".$category->id."-".time() . '.' . $avatar->getClientOriginalExtension();
-            $path  = public_path('/uploads/categories/' . $filename);
-            $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save( $path );
-            $category->avatar =  asset('/uploads/categories/'. $filename);
+
+            $a=1;
+                foreach ($request->avatar as $key => $photo) {
+                    $category_image = new CategoryImage ;
+                    $category_image->category_id = $category->id;
+                    $MimeType = explode ("/",$photo->getMimeType());
+                    $filename = "C-".$category->id."-".time() . '-'.$a.'.' . $MimeType[1];
+                    $path  = public_path('/uploads/categories/' . $filename);
+                    $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
+                    $category_image->path = asset('/uploads/categories/'. $filename);
+                    $category_image->save();
+                    $a++;
+                }
+            }else {
+              // echo "no p";
             }
         if($category->save()){
           return redirect()->route('category.index');

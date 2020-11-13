@@ -24,6 +24,7 @@
                     <tr>
                     <th>#</th>
                     <th>{{__('Full Name')}}</th>
+                    <th>{{__('username')}}</th>
                     <th>{{__('Email')}}</th>
                     <th>{{__('Role')}}</th>
                     <th>{{__('Options')}}</th>
@@ -31,20 +32,24 @@
                 </thead>
                 <tbody>
                     @php
-                        $i=0;   
+                        $i=0;
                     @endphp
                     @foreach ($users as $user)
                     @php
-                        $i++    
+                        $i++
                     @endphp
                         <tr id="#user{{$user->id}}">
                             <td>{{$i}}</td>
                             <td>{{$user->name}}</td>
+                            <td>{{$user->username}}</td>
                             <td>{{$user->email}}</td>
-                            <td><span class="badge badge-success">{{$user->getRoleNames()[0]}}</span></td>
+                            <td><span class="badge badge-success">@if(isset($user->getRoleNames()[0])){{$user->getRoleNames()[0]}} @endif</span></td>
                             <td>
                               @can('Manage User')
                               <div class="btn-group">
+                                @if(isset($user->getRoleNames()[0]) && $user->getRoleNames()[0]=="User")
+                                <a type="button" target="_blank" href="{{route('provider',$user->username)}}" class="btn btn-success"><i class="fas fa-globe"></i></a>
+                                @endif
                                 <a type="button" href="{{route('users.edit',$user->id)}}" class="btn btn-warning"><i class="fas fa-user-edit"></i></a>
                                 <button type="button" onclick="delete_user({{$user->id}})" class="btn btn-danger"><i class="fas fa-user-times"></i></button>
                               </div>
@@ -99,9 +104,9 @@
             filter = input.value.toUpperCase();
             table = document.getElementById("users_table");
             tr = table.getElementsByTagName("tr");
-                
+
             // Search By Email
-            for (i = 0; i < tr.length; i++) { 
+            for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[2];
                 if (td) {
                     txtValue = td.textContent || td.innerText;

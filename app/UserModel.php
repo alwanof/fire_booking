@@ -22,4 +22,8 @@ class UserModel extends Model
   {
     return $this->hasMany(Service::class);
   }
+  public function Images()
+  {
+    return $this->hasMany(UserModelImage::class);
+  }
 }

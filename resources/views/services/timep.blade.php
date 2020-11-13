@@ -1,10 +1,10 @@
 
 <div class="col-xs-12" style="margin-top:2rem">
   <label for="">Times :</label>
-<div style="width:100%;  overflow:hidden;" id="tarihSelector" class="add_height">
+<div style="width:300px;  overflow:hidden;" id="tarihSelector" class="add_height">
 <div style="display:flex; overflow-x: scroll; padding-bottom:5px;" id="pills_holder">
   @foreach($times as $time)
-  @if(timeAvalibality(1,$t_date." ".$time->time.":00") < $amount    )
+  @if(timeAvalibality($service->id,$t_date." ".$time->time.":00") < $amount    )
 
 
 <button type="button" class="btn btn-success" onclick="selectTime('{{$time->time}}')"  data-id="{{$time->time}}" style="float:left; margin-left:10px;">

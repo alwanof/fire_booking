@@ -12,4 +12,8 @@ class Category extends Model
     {
       return $this->hasMany(UserModel::class);
     }
+    public function Images()
+    {
+      return $this->hasMany(CategoryImage::class);
+    }
 }

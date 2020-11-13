@@ -85,12 +85,14 @@
               </ul>
             </li>
             @endcan
+            @can('Manage Language')
             <li class="nav-item">
               <a href="{{route('languages.index')}}" class="nav-link ">
                 <i class="nav-icon fas fa-globe"></i>
                 <p>{{__('Language Managment')}}</p>
               </a>
             </li>
+            @endcan
             @can('Manage Configuration')
             <li class="nav-item">
               <a href="{{route('configurations.index')}}" class="nav-link ">

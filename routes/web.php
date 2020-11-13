@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->middleware('auth');
+Route::view('/', 'home')->middleware('auth');
 
 Auth::routes();
 
@@ -68,5 +68,5 @@ Route::get('/services/getDates/{service}','ServiceController@getDates');
 Route::get('/services/getModels/{id}','ServiceController@getModels');
 Route::get('/services/getTimes/{service}/{date}','ServiceController@getTimes');
 Route::get('models/getServices/{UserModel}','UserModelController@getServices');
-Route::get('/provider/{username}','HomeController@provider');
+Route::get('/provider/{username}','HomeController@provider')->name('provider');
 Route::post('/provider/{username}/reservation','HomeController@reservation')->name('customer.reservation');

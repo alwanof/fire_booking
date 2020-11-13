@@ -52,9 +52,18 @@
             <input type="number" class="form-control" id="duration" step="15" name="duration" value="30" min="30" required>
           </div>
           <div class="form-group">
-            <label for="inputName">{{__('Avatar')}}</label>
-            <input type="file" name="avatar" class="form-control" required>
-        </div>
+              <label for="images">{{__('Avatar')}}</label>
+              <div class="input-group">
+                <div class="custom-file">
+                <input type="file" name="avatar[]" class="custom-file-input" id="images">
+                <label class="custom-file-label" for="images">{{__('Choose file')}}</label>
+                </div>
+                <div class="input-group-append">
+                                    <button type="button" id="add_image" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></button>
+                </div>
+              </div>
+                          </div>
+                          <div id="images_holder"></div>
         <div class="form-group">
           <hr>
           <legend class="text-center">{{__('Time Schedule')}}</legend>
@@ -88,6 +97,30 @@
   </div>
 @endsection
 @section('script')
+<script>
+  $(function(){
+            var id = 2;
+        $(document).on('click','#add_image',function(){
+            var section =  '<div class="form-group" id ="image_div_'+id+'" >';
+			section += '<label for="images">{{__("Avatar")}}</label>';
+			section += '<div class="input-group">';
+			section += '<div class="custom-file">';
+			section += '<input type="file" name="avatar[]" class="custom-file-input" id="images">';
+			section += '<label class="custom-file-label" for="images">Choose file</label>';
+			section += '</div>';
+			section += '<div class="input-group-append">';
+			section += '<span class="input-group-text bg-danger" onclick="delete_div('+id+')"> <i class="fa fa-trash"></i> </span>';
+			section += '</div>';
+			section += '</div>';
+            section += '</div>';
+            $("#images_holder").append(section);
+            id++
+        })
+    })
+    function delete_div(id) {
+    $("#image_div_"+id).remove();
+    }
+</script>
 <script>
   $(function(){
     $(document).ready(function(){

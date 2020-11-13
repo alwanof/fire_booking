@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Service;
 use App\Category;
 use App\ServiceTime;
+use App\ServiceImage;
 use App\UserModel;
 use Illuminate\Http\Request;
 use DateTime;
 use DatePeriod;
 use DateInterval;
 use DB;
+use Intervention\Image\ImageManagerStatic as Image;
 class ServiceController extends Controller
 {
 
@@ -103,7 +105,7 @@ class ServiceController extends Controller
       $service->discount_price  = $request->discount_price;
       $service->amount  = $request->amount;
       $service->duration  = $request->duration;
-      $service->avatar  = $request->avatar;
+      $service->avatar  = "test";
       if($service->save()){
         foreach ($request->times as $value) {
           $valued = explode('-',$value);
@@ -113,6 +115,23 @@ class ServiceController extends Controller
           $serviceTimes->time = $valued[1];
           $serviceTimes->save();
         }
+        if($request->hasfile('avatar')){
+
+            $a=1;
+                foreach ($request->avatar as $key => $photo) {
+                    $service_image = new ServiceImage ;
+                    $service_image->service_id = $service->id;
+                    $MimeType = explode ("/",$photo->getMimeType());
+                    $filename = "S-".$service->id."-".time() . '-'.$a.'.' . $MimeType[1];
+                    $path  = public_path('/uploads/services/' . $filename);
+                    $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
+                    $service_image->path = asset('/uploads/services/'. $filename);
+                    $service_image->save();
+                    $a++;
+                }
+            }else {
+              // echo "no p";
+            }
         return redirect()->route('services.index');
       }
     }
@@ -161,7 +180,7 @@ class ServiceController extends Controller
       $times=  $service->serviceTimes->where('date',$c_date);
       $amount = $service->amount;
 
-      return view('services.timep',compact('times','t_date','amount'));
+      return view('services.timep',compact('service','times','t_date','amount'));
     }
 
     /**

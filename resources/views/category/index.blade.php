@@ -86,13 +86,27 @@
                 <input type="text" class="form-control" value="" name="title" required>
             </div>
             <div class="form-group">
+                <label for="">{{__('Video')}}</label>
+                <input type="text" class="form-control" value="" name="video" >
+            </div>
+            <div class="form-group">
                 <label for="">{{__('Description')}}</label>
                 <textarea name="description" class="form-control" rows="5" cols="50" required></textarea>
             </div>
+
             <div class="form-group">
-                <label for="">{{__('Avatar')}}</label>
-                <input type="file" class="form-control" name="avatar" value="" required>
-            </div>
+								<label for="images">{{__('Avatar')}}</label>
+								<div class="input-group">
+								  <div class="custom-file">
+									<input type="file" name="avatar[]" class="custom-file-input" id="images">
+									<label class="custom-file-label" for="images">{{__('Choose file')}}</label>
+								  </div>
+								  <div class="input-group-append">
+                                      <button type="button" id="add_image" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></button>
+								  </div>
+								</div>
+                            </div>
+                            <div id="images_holder"></div>
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Close')}}</button>
@@ -104,5 +118,33 @@
     </div>
     <!-- /.modal-dialog -->
   </div>
+
+@endsection
+@section('script')
+
+<script>
+  $(function(){
+            var id = 2;
+        $(document).on('click','#add_image',function(){
+            var section =  '<div class="form-group" id ="image_div_'+id+'" >';
+			section += '<label for="images">{{__("Avatar")}}</label>';
+			section += '<div class="input-group">';
+			section += '<div class="custom-file">';
+			section += '<input type="file" name="avatar[]" class="custom-file-input" id="images">';
+			section += '<label class="custom-file-label" for="images">Choose file</label>';
+			section += '</div>';
+			section += '<div class="input-group-append">';
+			section += '<span class="input-group-text bg-danger" onclick="delete_div('+id+')"> <i class="fa fa-trash"></i> </span>';
+			section += '</div>';
+			section += '</div>';
+            section += '</div>';
+            $("#images_holder").append(section);
+            id++
+        })
+    })
+    function delete_div(id) {
+    $("#image_div_"+id).remove();
+    }
+</script>
 
 @endsection

@@ -19,6 +19,10 @@ class Service extends Model
     {
        return $this->hasMany(ServiceTime::class);
     }
+    public function Images()
+    {
+       return $this->hasMany(ServiceImage::class);
+    }
 
 
 
