@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Rinvex\Support\Traits\ValidatingTrait;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
-
+use Illuminate\Support\Str;
 abstract class BookableBooking extends Model
 {
     use ValidatingTrait;
@@ -33,6 +33,7 @@ abstract class BookableBooking extends Model
         'canceled_at',
         'options',
         'notes',
+        'booking_key',
     ];
 
     /**
@@ -53,6 +54,7 @@ abstract class BookableBooking extends Model
         'canceled_at' => 'datetime',
         'options' => 'array',
         'notes' => 'string',
+        'booking_key'=>'string',
     ];
 
     /**
@@ -134,6 +136,7 @@ abstract class BookableBooking extends Model
                $bookableAvailability->formula = [$data['unit']];
                $bookableAvailability->price = $data['total_price'];
                $bookableAvailability->total_paid = 0;
+               $bookableAvailability->booking_key=Str::random(10);
                return;
            }
        });
