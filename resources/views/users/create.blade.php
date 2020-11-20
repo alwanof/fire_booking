@@ -47,8 +47,8 @@
         </div>
         <div class="form-group">
           <label for="inputName">{{__('Role')}}</label>
-          <select class="form-control" name="role" id="">
-            <option value="">{{__('Grant Role')}}</option>
+          <select class="form-control" name="role" id="" required>
+            <option value="">{{__('Select Role')}}</option>
               @foreach (Spatie\Permission\Models\Role::all() as $role)
             <option value="{{$role->id}}" >{{__($role->name)}}</option>
               @endforeach

@@ -6,6 +6,7 @@ use App\Traits\Multitenantable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Rinvex\Bookings\Models\BookableBooking;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -49,6 +50,9 @@ class User extends Authenticatable
     public function Categories()
     {
       return $this->hasMany(Category::class);
+    }
+    public function Bookings (){
+        return $this->hasMany(Booking::class);
     }
 
 

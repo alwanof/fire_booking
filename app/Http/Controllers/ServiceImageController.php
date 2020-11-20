@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryImage;
 use App\ServiceImage;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,16 @@ class ServiceImageController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    public function delete(ServiceImage $serviceImage)
+    {
+        try {
+            $serviceImage->delete();
+            return Response()->json(['status'=>200]);
+        }catch (Exception $e){
+            return Response()->json(['status'=>303]);
+
+        }
     }
 
     /**

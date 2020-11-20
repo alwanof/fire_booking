@@ -37,38 +37,11 @@
                 <label for="">{{__('Bio')}}</label>
                 <textarea name="bio" class="form-control" rows="5" cols="50" required>{{$userModel->bio}}</textarea>
             </div>
-            @if($userModel->Images->count() != 0)
-                @foreach($userModel->Images as $image)
-              <div class="form-group">
-                <label for="inputName">{{__('Avatar')}}</label>
-                <div class="input-group">
-                  <div class="custom-file">
-                  <input type="file" name="avatar[]" class="custom-file-input" id="images">
-                  <label class="custom-file-label" for="images">{{__('Choose file')}}</label>
-                  </div>
-                  <div class="input-group-append">
-                                      <button type="button" id="add_image" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></button>
-                  </div>
-                </div>
-              <img src="{{$image->path}}" width="10%" class="img-thumbnail" alt="">
-            </div>
-            @endforeach
-            @else
-            <div class="form-group">
-              <label for="inputName">{{__('Avatar')}}</label>
-              <div class="input-group">
-                <div class="custom-file">
-                <input type="file" name="avatar[]" class="custom-file-input" id="images">
-                <label class="custom-file-label" for="images">{{__('Choose file')}}</label>
-                </div>
-                <div class="input-group-append">
-                                    <button type="button" id="add_image" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></button>
-                </div>
-              </div>
+                <div class="form-group">
+                    <input id="input-b3" name="avatar[]"  type="file" class="file" multiple
+                           data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
 
-          </div>
-            @endif
-            <div id="images_holder"></div>
+                </div>
 
           <div class="form-group">
             <a href="{{route('home')}}" class="btn btn-secondary">{{__('Cancel')}}</a>
@@ -85,6 +58,28 @@
     </div>
 
   </div>
+<script>
+    fileinput =  $("#input-b3").fileinput({
+        initialPreview: [
+            @foreach($userModel->Images as $image)
+                "<img src='{{$image->path}}'" +
+            " class='file-preview-image'" +
+            " alt='{{$image->id}}' title='{{$image->id}}'>",
+            @endforeach
+        ],
+        initialPreviewConfig: [
+                @foreach($userModel->Images as $image)
+            {
+                caption: '{{$image->path}}',
+                url: '{{route('model_image.destroy',$image->id)}}',
+                key: {{$image->id}},
+                extra: {id: {{$image->id}}}
+            },
+            @endforeach
+
+        ]
+    });
+</script>
 @endsection
 @section('script')
 

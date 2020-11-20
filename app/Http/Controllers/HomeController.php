@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\MailManager;
@@ -36,6 +37,10 @@ class HomeController extends Controller
 
 
     }
+    public function preview()
+    {
+      return view('mail');
+    }
     public function reservation(Request $request)
     {
       // return $request->all();
@@ -53,19 +58,20 @@ class HomeController extends Controller
       $c_start_date =  strtotime($start_date);
       $c_end_date =  strtotime(" + ".$service->duration."minutes",$c_start_date);
         $end_date= date('Y/m/d h:i', $c_end_date);
-      $booking  = $customer->newBooking($service, $start_date, $end_date);
+      $booking  = $customer->newBooking($service, $start_date, $end_date,$request->user_id);
       $key = $booking->booking_key;
       $email = $customer->email;
       $name = $customer->name;
       // $data = array('name'=>$name,'key'=>$key,'email'=>$email);
 
-      Mail::to($email)->send(new MailManager($name,$key,$email));
+      Mail::to($email)->send(new MailManager($name,$key,$email,$booking));
           // $mail =   Mail::send(['html'=>'mail'], $data, function($message) {
           //   dd($this->request);
           //      $message->to($request->email, $request->name)->subject
           //         ('2urkey Booking | New Booking ');
           //      $message->from('info@2urkeybooking.com','2urkey Booking');
           //   });
+
       return view('reservation.thanks',compact('name','email','key'));
     }
 

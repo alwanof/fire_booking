@@ -95,18 +95,12 @@
             </div>
 
             <div class="form-group">
-								<label for="images">{{__('Avatar')}}</label>
-								<div class="input-group">
-								  <div class="custom-file">
-									<input type="file" name="avatar[]" class="custom-file-input" id="images">
-									<label class="custom-file-label" for="images">{{__('Choose file')}}</label>
-								  </div>
-								  <div class="input-group-append">
-                                      <button type="button" id="add_image" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></button>
-								  </div>
-								</div>
-                            </div>
-                            <div id="images_holder"></div>
+                <label for="images">{{__('Avatar')}}</label>
+
+                <input id="input-b3" name="avatar[]" required type="file" class="file" multiple
+                       data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+
+            </div>
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">{{__('Close')}}</button>

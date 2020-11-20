@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\CategoryImage;
 use App\UserModelImage;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class UserModelImageController extends Controller
 {
@@ -81,5 +83,15 @@ class UserModelImageController extends Controller
     public function destroy(UserModelImage $userModelImage)
     {
         //
+    }
+    public function delete(UserModelImage $userModelImage)
+    {
+        try {
+            $userModelImage->delete();
+            return Response()->json(['status'=>200]);
+        }catch (Exception $e){
+            return Response()->json(['status'=>303]);
+
+        }
     }
 }

@@ -3,6 +3,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   @include('partials.head')
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -70,10 +71,15 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      Anything you want
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://2uerkey.com">2urkey.com</a></li>
+            <li class="list-inline-item"><a href="https://2urkeyhotels.com">2urkeyhotels.com</a></li>
+            <li class="list-inline-item"><a href="https://2uerkeymenu.com">2urkeymenu.com</a></li>
+
+        </ul>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="https://2urkeyBooking.com">2urkeyBooking.com</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

@@ -18,6 +18,7 @@ Route::view('/', 'home')->middleware('auth');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/preview', 'HomeController@preview')->name('preview');
 
 Route::group(['prefix'=>'Users','middleware'=>'auth'],function(){
 Route::get('/profile/{user}','UserController@profile')->name('users.profile');
@@ -27,6 +28,12 @@ Route::get('/users','UserController@index')->name('users.all')->middleware('perm
 Route::get('/users/create','UserController@create')->name('users.create');
 Route::post('/delete_user/{user}','UserController@delete')->name('users.delete')->middleware('permission:Manage User');
 Route::post('/store','UserController@store')->name('users.store');
+Route::get('/reservations/pending','UserController@reservations_pending')->name('user.reservations.pending');
+Route::post('/reservations/pending/key','UserController@reservations_pending_mark')->name('user.reservations.pending.mark');
+Route::get('/reservations/completed','UserController@reservations_completed')->name('user.reservations.completed');
+Route::post('/reservations/completed/key','UserController@reservations_completed_mark')->name('user.reservations.completed.mark');
+Route::get('/reservations/rejected','UserController@reservations_rejected')->name('user.reservations.rejected');
+Route::post('/reservations/rejected/key','UserController@reservations_rejected_mark')->name('user.reservations.rejected.mark');
 });
 Route::group(['prefix'=>'Roles','middleware'=>['auth','permission:Manage Role']],function(){
 Route::get('roles','RoleController@index')->name('roles.index');
@@ -62,11 +69,17 @@ Route::resources([
     'category' => CategoryController::class,
     'model' => UserModelController::class,
     'services' => ServiceController::class,
+    'customer' => CustomerController::class,
 ]);
+Route::get('/customer/{customer}/reservations','CustomerController@reservations')->name('customer.reservations');
 Route::post('/services/TimeSchemaCreator','ServiceController@TimeSchemaCreator');
+Route::post('/services/update/{service}','ServiceController@update')->name('services.update1');
 Route::get('/services/getDates/{service}','ServiceController@getDates');
 Route::get('/services/getModels/{id}','ServiceController@getModels');
 Route::get('/services/getTimes/{service}/{date}','ServiceController@getTimes');
 Route::get('models/getServices/{UserModel}','UserModelController@getServices');
 Route::get('/provider/{username}','HomeController@provider')->name('provider');
 Route::post('/provider/{username}/reservation','HomeController@reservation')->name('customer.reservation');
+Route::post('/category_image/{categoryImage}','CategoryImageController@delete')->name(  'category_image.destroy' );
+Route::post('/service_image/{serviceImage}','ServiceImageController@delete')->name(  'service_image.destroy' );
+Route::post('/model_image/{userModelImage}','UserModelImageController@delete')->name(  'model_image.destroy' );

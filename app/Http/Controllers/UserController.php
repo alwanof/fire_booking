@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MailManager;
 use Illuminate\Http\Request;
 use App\User;
 use Auth ;
@@ -9,6 +10,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
+use Mail;
 class UserController extends Controller
 {
     public function __construct()
@@ -117,6 +119,50 @@ class UserController extends Controller
 
 
         return redirect()->route('users.all');
+    }
+
+    public function reservations_pending (){
+       $reservations =  Auth()->user()->Bookings->where('status',0);
+       return view('users.reservations',compact('reservations'));
+    }
+    public function reservations_completed (){
+        $reservations =  Auth()->user()->Bookings->where('status',1);
+        return view('users.reservations',compact('reservations'));
+    }
+    public function reservations_rejected (){
+        $reservations =  Auth()->user()->Bookings->where('status',2);
+        return view('users.reservations',compact('reservations'));
+    }
+    public function reservations_completed_mark (Request $request){
+       $booking = Auth()->user()->Bookings->where('booking_key',$request->booking_key)->first();
+       if ($booking){
+
+           $booking->status = 1;
+
+          $booking->save();
+          $customer = $booking->customer_type::find($booking->customer_id);
+           Mail::to($customer->email)->send(
+               new MailManager($customer->name,
+                   $request->booking_key,
+                   $customer->email,$booking));
+
+           return response()->json(["status"=>200,"data"=>$booking]);
+       }else{
+           return response()->json(["status"=>600]);
+       }
+    }
+    public function reservations_rejected_mark (Request $request){
+        $booking = Auth()->user()->Bookings->where('booking_key',$request->booking_key)->first();
+        if ($booking){
+
+            $booking->notes = $request->notes;
+            $booking->status = 2;
+
+            $booking->save();
+            return response()->json(["status"=>200,"data"=>$booking]);
+        }else{
+            return response()->json(["status"=>600]);
+        }
     }
 
 

@@ -1,6 +1,9 @@
 @extends('layouts.admin-lte')
+@section('style')
 
+@endsection
 @section('content')
+
 <div class="row">
     <div class="col-md-12">
       <div class="card card-primary">
@@ -13,6 +16,7 @@
           </div>
         </div>
         <div class="card-body">
+
             <form method="post" enctype="multipart/form-data" action="{{ route('services.store') }}">
             {{ csrf_field() }}
           <div class="form-group">
@@ -40,7 +44,7 @@
             </div>
             <div class="form-group col-6">
               <label for="inputName">{{__('Discounted Price')}}</label>
-              <input type="text" name="discount_price" class="form-control" placeholder="{{__('Discounted Price')}}" required>
+              <input type="text" name="discount_price" class="form-control" value="0" placeholder="{{__('Discounted Price')}}" required>
             </div>
           </div>
           <div class="form-group">
@@ -51,20 +55,50 @@
             <label for="">{{__('Duration')}}</label>
             <input type="number" class="form-control" id="duration" step="15" name="duration" value="30" min="30" required>
           </div>
-          <div class="form-group">
+               <div class="row">
+                   <div class="form-group col-md-6">
+                       <label for="">{{__('Start Hours')}}</label>
+                       <select class="form-control" name="start_hours" id="start_hours">
+                           @foreach ( range( 0, 86400, 3600 ) as $timestamp )
+                          @php
+                              $hour_mins = gmdate( 'H:i', $timestamp );
+                              if ( ! empty( 'g:i a' ) )
+                              $times[$hour_mins] = gmdate( 'g:i a', $timestamp );
+                              else $times[$hour_mins] = $hour_mins;
+                          @endphp
+                               <option value="{{$timestamp}}">{{$hour_mins}} </option>
+
+                           @endforeach
+                       </select>
+                   </div>
+                   <div class="form-group col-md-6">
+                       <label for="">{{__('End Hours')}}</label>
+                       <select class="form-control" name="end_hours" id="end_hours">
+                           @foreach ( range( 0, 86400, 3600 ) as $timestamp )
+                               @php
+                                   $hour_mins = gmdate( 'H:i', $timestamp );
+                                   if ( ! empty( 'g:i a' ) )
+                                   $times[$hour_mins] = gmdate( 'g:i a', $timestamp );
+                                   else $times[$hour_mins] = $hour_mins;
+                               @endphp
+                               <option value="{{$timestamp}}">{{$hour_mins}} </option>
+
+                           @endforeach
+                       </select>
+                   </div>
+               </div>
+
+                <div class="form-group">
               <label for="images">{{__('Avatar')}}</label>
-              <div class="input-group">
-                <div class="custom-file">
-                <input type="file" name="avatar[]" class="custom-file-input" id="images">
-                <label class="custom-file-label" for="images">{{__('Choose file')}}</label>
-                </div>
-                <div class="input-group-append">
-                                    <button type="button" id="add_image" class="btn btn-sm btn-success"><i class="fa fa-plus"></i></button>
-                </div>
-              </div>
+
+
+                  <input id="input-b3" required name="avatar[]" type="file" class="file" multiple
+                         data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+
                           </div>
-                          <div id="images_holder"></div>
+
         <div class="form-group">
+
           <hr>
           <legend class="text-center">{{__('Time Schedule')}}</legend>
           <hr>
@@ -99,6 +133,7 @@
 @section('script')
 <script>
   $(function(){
+      // $("#input-id").fileinput();
             var id = 2;
         $(document).on('click','#add_image',function(){
             var section =  '<div class="form-group" id ="image_div_'+id+'" >';
@@ -132,9 +167,11 @@
         },
         data:{"duration":$("#duration").val(),
               "start_date":$("#start_date").val(),
-              "end_date":$("#end_date").val()},
+              "end_date":$("#end_date").val(),
+            "start_hours":$("#start_hours").val(),
+            "end_hours":$("#end_hours").val()},
         success:function(data){
-          console.log(data);
+
           $("#timeSchemaHolder").html(data);
         },
         error:function(data){
@@ -142,7 +179,13 @@
         }
       })
     })
-    $(document).on("change","#duration",function(){
+    $(document).on("change",[
+        "#duration",
+        "#start_hours",
+        "#end_hours",
+        "#start_date",
+        "#end_date",
+    ],function(){
 
       $.ajax({
         url:"/index.php/services/TimeSchemaCreator",
@@ -152,9 +195,11 @@
         },
         data:{"duration":$("#duration").val(),
               "start_date":$("#start_date").val(),
-              "end_date":$("#end_date").val()},
+              "end_date":$("#end_date").val(),
+            "start_hours":$("#start_hours").val(),
+            "end_hours":$("#end_hours").val()},
         success:function(data){
-          console.log(data);
+
           $("#timeSchemaHolder").html(data);
         },
         error:function(data){
@@ -163,48 +208,7 @@
       })
 
     });
-    $(document).on("change","#start_date",function(){
 
-      $.ajax({
-        url:"/index.php/services/TimeSchemaCreator",
-        type:"POST",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{"duration":$("#duration").val(),
-              "start_date":$("#start_date").val(),
-              "end_date":$("#end_date").val()},
-        success:function(data){
-          console.log(data);
-          $("#timeSchemaHolder").html(data);
-        },
-        error:function(data){
-          alert("Something Wrong !");
-        }
-      })
-
-    });
-    $(document).on("change","#end_date",function(){
-
-      $.ajax({
-        url:"/index.php/services/TimeSchemaCreator",
-        type:"POST",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{"duration":$("#duration").val(),
-              "start_date":$("#start_date").val(),
-              "end_date":$("#end_date").val()},
-        success:function(data){
-          console.log(data);
-          $("#timeSchemaHolder").html(data);
-        },
-        error:function(data){
-          alert("Something Wrong !");
-        }
-      })
-
-    })
   })
 </script>
 @endsection

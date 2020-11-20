@@ -47,7 +47,7 @@ class ServiceController extends Controller
 
       $duration = $request->duration;
       $dates =  $this->date_range($request->start_date,$request->end_date);
-      $times =   $this->get_hours_range(0,86400,$duration*60,'g:i');
+      $times =   $this->get_hours_range($request->start_hours,$request->end_hours,$duration*60,'g:i');
       return view('services.timeSchema',compact('times','dates'));
     }
     function date_range($first, $last, $step = '+1 day', $output_format = 'Y/m/d' ) {
@@ -85,7 +85,7 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-      // return $request->all();
+
       $request->validate([
           'title' => ['required'],
           'description' => ['required'],
@@ -97,12 +97,13 @@ class ServiceController extends Controller
           'avatar' => ['required']
 
       ]);
+        $discount = $this->calcDiscount($request->discount_price , $request->price);
       $service = new Service;
       $service->title  = $request->title;
       $service->description  = $request->description;
       $service->user_model_id  = $request->user_model_id;
       $service->price  = $request->price;
-      $service->discount_price  = $request->discount_price;
+      $service->discount_price  = $discount;
       $service->amount  = $request->amount;
       $service->duration  = $request->duration;
       $service->avatar  = "test";
@@ -146,6 +147,19 @@ class ServiceController extends Controller
     {
         //
     }
+    public function calcDiscount($discount_price , $price ){
+        if (strpos($discount_price,'%')){
+            $discount_price  = str_replace("%", "",$discount_price);
+
+            $y = ($discount_price * $price)/100;
+             $discount  = $price - $y ;
+
+        }else{
+             $discount = $price - $discount_price;
+
+        }
+        return $discount;
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -157,10 +171,12 @@ class ServiceController extends Controller
     {
         $models = UserModel::all();
         $times = $service->serviceTimes;
-        $start_date = $times->min('date');
-        $end_date = $times->max('date');
-        $dates =  $this->date_range($start_date,$end_date);
+        $start_date = date("Y-m-d",strtotime($times->min('date')));
+        $end_date = date("Y-m-d",strtotime($times->max('date')));
+
+        $dates =  $this->date_range($times->min('date'),$times->max('date'));
         $times_ava =   $this->get_hours_range(0,86400,$service->duration*60,'g:i');
+//        return $start_date;
         return view('services.edit',compact('service','models','start_date','end_date','times_ava','dates'));
     }
     public function getDates(Service $service)
@@ -192,7 +208,44 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        //
+        $discount = $this->calcDiscount($request->discount_price , $request->price);
+       $service->serviceTimes()->delete();
+        $service->title  = $request->title;
+        $service->description  = $request->description;
+        $service->user_model_id  = $request->user_model_id;
+        $service->price  = $request->price;
+        $service->discount_price  = $discount;
+        $service->amount  = $request->amount;
+        $service->duration  = $request->duration;
+        $service->avatar  = "test";
+        if($service->save()){
+            foreach ($request->times as $value) {
+                $valued = explode('-',$value);
+                $serviceTimes = new ServiceTime;
+                $serviceTimes->service_id = $service->id;
+                $serviceTimes->date = $valued[0];
+                $serviceTimes->time = $valued[1];
+                $serviceTimes->save();
+            }
+            if($request->hasfile('avatar')){
+
+                $a=1;
+                foreach ($request->avatar as $key => $photo) {
+                    $service_image = new ServiceImage ;
+                    $service_image->service_id = $service->id;
+                    $MimeType = explode ("/",$photo->getMimeType());
+                    $filename = "S-".$service->id."-".time() . '-'.$a.'.' . $MimeType[1];
+                    $path  = public_path('/uploads/services/' . $filename);
+                    $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
+                    $service_image->path = asset('/uploads/services/'. $filename);
+                    $service_image->save();
+                    $a++;
+                }
+            }else {
+                // echo "no p";
+            }
+            return redirect()->route('services.index');
+        }
     }
 
     /**

@@ -16,12 +16,14 @@ class MailManager extends Mailable
      *
      * @return void
      */
-     public $name , $key ,$email;
-    public function __construct($name,$key,$email)
+     public $name , $key ,$email,$data;
+    public function __construct($name,$key,$email, $data)
     {
       $this->name = $name ;
       $this->key = $key ;
       $this->email = $email ;
+      $this->data= $data ;
+//      dd($data);
     }
 
     /**

@@ -111,12 +111,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-      if($category->Images->count() != 0){
-      foreach ($category->Images as $image) {
-        // code...
-        $image->delete();
-      }
-      }
+
       $request->validate([
           'title' => ['required', 'string', 'max:255'],
           'description' => ['required', 'string'],

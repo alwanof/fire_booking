@@ -11,7 +11,7 @@ class Service extends Model
   use Bookable;
     //
 
-    public function Model()
+    public function UserModel()
     {
       return $this->belongsTo(UserModel::class);
     }

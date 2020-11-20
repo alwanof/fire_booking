@@ -14,7 +14,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+      $customers = Customer::where('user_id',Auth()->user()->id)->get();
+      return view('customer.index',compact('customers'));
     }
 
     /**
@@ -25,6 +26,11 @@ class CustomerController extends Controller
     public function create()
     {
         //
+    }
+    public function reservations(Customer $customer)
+    {
+      $bookings =  $customer->bookings;
+      return view('customer.reservations',compact('bookings','customer'));
     }
 
     /**

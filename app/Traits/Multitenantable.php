@@ -30,7 +30,7 @@ trait Multitenantable
                 try {
                     $table = $model->getTable();
                     if ($table == 'users') {
-                        $model->ref = auth()->id();
+//                        $model->ref = auth()->id();
                     } else {
                         $model->user_id = auth()->id();
                     }

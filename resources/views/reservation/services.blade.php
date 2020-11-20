@@ -23,7 +23,13 @@
                                 </span> <a data-toggle="collapse" data-target="#viewdetails{{$service->id}}">More... &raquo;</a></p>
           <div class="col-md-12">
             <div class="row">
-              <p>Price : <span>{{$service->price}}$</span> </p>
+                @if($service->discount_price  != 0 && $service->discount_price < $service->price)
+                    <p>Price : <span>{{$service->price}}$</span> </p>
+                    <p>Discount Price : <span>{{$service->discount_price}}$</span> </p>
+                @else
+                    <p>Price : <span>{{$service->price}}$</span> </p>
+
+                @endif
             </div>
             <div class="row">
               <div id="datep-{{$service->id}}">

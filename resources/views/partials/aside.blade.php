@@ -36,7 +36,7 @@
                 <li class="nav-item">
                   <a href="{{route('users.all')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>{{__('Users Managment')}}</p>
+                    <p>{{__('Users Management')}}</p>
                   </a>
                 </li>
                 @endcan
@@ -53,7 +53,7 @@
                 <li class="nav-item">
                   <a href="{{route('roles.index')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>{{__('Roles Managment')}}</p>
+                    <p>{{__('Roles Management')}}</p>
                   </a>
                 </li>
                 @endcan
@@ -70,7 +70,7 @@
                 <li class="nav-item">
                   <a href="{{route('permissions.index')}}" class="nav-link ">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>{{__('Permissions Managment')}}</p>
+                    <p>{{__('Permissions Management')}}</p>
                   </a>
                 </li>
                 @endcan
@@ -89,7 +89,7 @@
             <li class="nav-item">
               <a href="{{route('languages.index')}}" class="nav-link ">
                 <i class="nav-icon fas fa-globe"></i>
-                <p>{{__('Language Managment')}}</p>
+                <p>{{__('Language Management')}}</p>
               </a>
             </li>
             @endcan
@@ -97,7 +97,7 @@
             <li class="nav-item">
               <a href="{{route('configurations.index')}}" class="nav-link ">
                 <i class="nav-icon fas fa-globe"></i>
-                <p>{{__('Configurations Managment')}}</p>
+                <p>{{__('Configurations Management')}}</p>
               </a>
             </li>
             @endcan
@@ -105,28 +105,61 @@
             <li class="nav-item">
               <a href="{{route('settings.index')}}" class="nav-link ">
                 <i class="nav-icon fas fa-globe"></i>
-                <p>{{__('Settings Managment')}}</p>
+                <p>{{__('Settings Management')}}</p>
               </a>
             </li>
             @endcan
             <li class="nav-item">
               <a href="{{route('category.index')}}" class="nav-link ">
                 <i class="nav-icon fas fa-globe"></i>
-                <p>{{__('Categories Managment')}}</p>
+                <p>{{__('Categories Management')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('model.index')}}" class="nav-link ">
                 <i class="nav-icon fas fa-globe"></i>
-                <p>{{__('Models Managment')}}</p>
+                <p>{{__('Models Management')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('services.index')}}" class="nav-link ">
                 <i class="nav-icon fas fa-globe"></i>
-                <p>{{__('Services Managment')}}</p>
+                <p>{{__('Services Management')}}</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="{{route('customer.index')}}" class="nav-link ">
+                <i class="nav-icon fas fa-globe"></i>
+                <p>{{__('Customers Management')}}</p>
+              </a>
+            </li>
+              <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link ">
+                      <i class="nav-icon fas fa-globe"></i>
+                      <p>{{__('Reservations Management')}}</p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                      <li class="nav-item">
+                          <a href="{{route('user.reservations.pending')}}" class="nav-link ">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>{{__('Pending Reservations')}}</p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{route('user.reservations.completed')}}" class="nav-link ">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>{{__('Completed Reservations')}}</p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{route('user.reservations.rejected')}}" class="nav-link ">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>{{__('Rejected Reservations')}}</p>
+                          </a>
+                      </li>
+                  </ul>
+              </li>
+
 
           </ul>
         </nav>

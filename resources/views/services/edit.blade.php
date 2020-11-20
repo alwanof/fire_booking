@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="card-body">
-            <form method="post" enctype="multipart/form-data" action="{{ route('services.store') }}">
+            <form method="post" enctype="multipart/form-data" action="{{ route('services.update1',$service->id) }}">
             {{ csrf_field() }}
           <div class="form-group">
             <label for="inputName">{{__('Title')}}</label>
@@ -51,21 +51,25 @@
             <label for="">{{__('Duration')}}</label>
             <input type="number" class="form-control" id="duration" step="15" name="duration" value="{{$service->duration}}" min="30" required>
           </div>
-          <div class="form-group">
-            <label for="inputName">{{__('Avatar')}}</label>
-            <input type="file" name="avatar" class="form-control" required>
-        </div>
+                <div class="form-group">
+                    <label for="images">{{__('Avatar')}}</label>
+
+
+                    <input id="input-b3"     name="avatar[]" type="file" class="file" multiple
+                           data-show-upload="false" data-show-caption="true" data-msg-placeholder="Select {files} for upload...">
+
+                </div>
         <div class="form-group">
           <hr>
           <legend class="text-center">{{__('Time Schedule')}}</legend>
           <hr>
           <div class="form-group">
             <label for="inputName">{{__('Start Date')}}</label>
-            <input type="date" name="start_date" id="start_date" class="form-control" value="{{$start_date}}" required>
+            <input type="date" name="start_date" id="start_date" value="{{$start_date}}" class="form-control"  required>
         </div>
         <div class="form-group">
           <label for="inputName">{{__('End Date')}}</label>
-          <input type="date" name="end_date" id="end_date" pattern="{31}/{12}{2999}" class="form-control" value="{{$end_date}}" required>
+          <input type="date" name="end_date" id="end_date" value="{{$start_date}}"   class="form-control"  required>
       </div>
           <div class=" table-responsive" id="timeSchemaHolder">
             <table class="table">
@@ -83,7 +87,7 @@
                 <tr>
                   <td>{{$key}}</td>
                   @foreach ($dates as $value)
-                  <td> <input type="checkbox" name="times[]"  value="{{$value}}-{{$key}}"> </td>
+                  <td> <input type="checkbox" name="times[]" checked value="{{$value}}-{{$key}}"> </td>
                     @endforeach
                 </tr>
                 @endforeach
@@ -107,74 +111,96 @@
     </div>
 
   </div>
+<script>
+    fileinput =  $("#input-b3").fileinput({
+        initialPreview: [
+            @foreach($service->Images as $image)
+                "<img src='{{$image->path}}'" +
+            " class='file-preview-image'" +
+            " alt='{{$image->id}}' title='{{$image->id}}'>",
+            @endforeach
+        ],
+        initialPreviewConfig: [
+                @foreach($service->Images as $image)
+            {
+                caption: '{{$image->path}}',
+                url: '{{route('service_image.destroy',$image->id)}}',
+                key: {{$image->id}},
+                extra: {id: {{$image->id}}}
+            },
+            @endforeach
+
+        ]
+    });
+</script>
 @endsection
 @section('script')
-<script>
-  $(function(){
-    
-    $(document).on("change","#duration",function(){
+    <script>
+        $(function(){
 
-      $.ajax({
-        url:"/services/TimeSchemaCreator",
-        type:"POST",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{"duration":$("#duration").val(),
-              "start_date":$("#start_date").val(),
-              "end_date":$("#end_date").val()},
-        success:function(data){
-          console.log(data);
-          $("#timeSchemaHolder").html(data);
-        },
-        error:function(data){
-          alert("Something Wrong !");
-        }
-      })
+            $(document).on("change","#duration",function(){
 
-    });
-    $(document).on("change","#start_date",function(){
+                $.ajax({
+                    url:"/index.php/services/TimeSchemaCreator",
+                    type:"POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data:{"duration":$("#duration").val(),
+                        "start_date":$("#start_date").val(),
+                        "end_date":$("#end_date").val()},
+                    success:function(data){
 
-      $.ajax({
-        url:"/services/TimeSchemaCreator",
-        type:"POST",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{"duration":$("#duration").val(),
-              "start_date":$("#start_date").val(),
-              "end_date":$("#end_date").val()},
-        success:function(data){
-          console.log(data);
-          $("#timeSchemaHolder").html(data);
-        },
-        error:function(data){
-          alert("Something Wrong !");
-        }
-      })
+                        $("#timeSchemaHolder").html(data);
+                    },
+                    error:function(data){
+                        alert("Something Wrong !");
+                    }
+                })
 
-    });
-    $(document).on("change","#end_date",function(){
+            });
+            $(document).on("change","#start_date",function(){
 
-      $.ajax({
-        url:"/services/TimeSchemaCreator",
-        type:"POST",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{"duration":$("#duration").val(),
-              "start_date":$("#start_date").val(),
-              "end_date":$("#end_date").val()},
-        success:function(data){
-          console.log(data);
-          $("#timeSchemaHolder").html(data);
-        },
-        error:function(data){
-          alert("Something Wrong !");
-        }
-      })
+                $.ajax({
+                    url:"/index.php/services/TimeSchemaCreator",
+                    type:"POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data:{"duration":$("#duration").val(),
+                        "start_date":$("#start_date").val(),
+                        "end_date":$("#end_date").val()},
+                    success:function(data){
 
-    })
-  })
-</script>
+                        $("#timeSchemaHolder").html(data);
+                    },
+                    error:function(data){
+                        alert("Something Wrong !");
+                    }
+                })
+
+            });
+            $(document).on("change","#end_date",function(){
+
+                $.ajax({
+                    url:"/index.php/services/TimeSchemaCreator",
+                    type:"POST",
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    data:{"duration":$("#duration").val(),
+                        "start_date":$("#start_date").val(),
+                        "end_date":$("#end_date").val()},
+                    success:function(data){
+
+                        $("#timeSchemaHolder").html(data);
+                    },
+                    error:function(data){
+                        alert("Something Wrong !");
+                    }
+                })
+
+            })
+        })
+    </script>
 @endsection

@@ -16,7 +16,7 @@
     <tr>
       <td>{{$key}}</td>
       @foreach ($dates as $value)
-      <td> <input type="checkbox" name="times[]" value="{{$value}}-{{$key}}"> </td>
+      <td> <input type="checkbox" name="times[]" value="{{$value}}-{{$key}}" checked> </td>
         @endforeach
 
     </tr>

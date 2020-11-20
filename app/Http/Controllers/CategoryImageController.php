@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CategoryImage;
 use Illuminate\Http\Request;
+use mysql_xdevapi\Exception;
 
 class CategoryImageController extends Controller
 {
@@ -78,8 +79,14 @@ class CategoryImageController extends Controller
      * @param  \App\CategoryImage  $categoryImage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryImage $categoryImage)
+    public function delete(CategoryImage $categoryImage)
     {
-        //
+        try {
+            $categoryImage->delete();
+            return Response()->json(['status'=>200]);
+        }catch (Exception $e){
+            return Response()->json(['status'=>303]);
+
+        }
     }
 }

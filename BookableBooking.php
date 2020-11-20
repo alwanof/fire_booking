@@ -23,6 +23,7 @@ abstract class BookableBooking extends Model
         'bookable_type',
         'customer_id',
         'customer_type',
+        'user_id',
         'starts_at',
         'ends_at',
         'price',
@@ -44,6 +45,7 @@ abstract class BookableBooking extends Model
         'bookable_type' => 'string',
         'customer_id' => 'integer',
         'customer_type' => 'string',
+        'user_id'=>'integer',
         'starts_at' => 'datetime',
         'ends_at' => 'datetime',
         'price' => 'float',
@@ -137,6 +139,7 @@ abstract class BookableBooking extends Model
                $bookableAvailability->price = $data['total_price'];
                $bookableAvailability->total_paid = 0;
                $bookableAvailability->booking_key=Str::random(10);
+               $bookableAvailability->user_id = 9;
                return;
            }
        });
@@ -176,6 +179,7 @@ abstract class BookableBooking extends Model
      */
     public function calculatePrice(Model $bookable, Carbon $startsAt, Carbon $endsAt = null, int $quantity = 1): array
     {
+        return $bookable;
         $totalUnits = 0;
 
         switch ($bookable->unit) {

@@ -1,24 +1,118 @@
 @extends('layouts.admin-lte')
 @section('breadcrumb', __('Dashboard') )
 @section('content')
-
 <div class="row">
-    <div class="col-lg-3">
+    <div class="col-md-3">
+        <div class="card card-warning card-outline">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="card-title">{{__('Awaiting Reservations')}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa fa-clock" style="font-size: 2rem; color: #ffc107"></i>
+                        <span style="font-size:1.5rem;font-weight: 900; color: #ffc107">{{Auth()->user()->Bookings->where('status',0)->count()}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-success card-outline">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="card-title">{{__('Completed Reservations')}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa fa-check" style="font-size: 2rem; color:#28a745"></i>
+                        <span style="font-size:1.5rem;font-weight: 900; color:#28a745">{{Auth()->user()->Bookings->where('status',1)->count()}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-danger card-outline">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="card-title">{{__('Rejected Reservations')}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa fa-ban" style="font-size: 2rem; color: #dc3545;"></i>
+                        <span style="font-size:1.5rem;font-weight: 900; color: #dc3545;">{{Auth()->user()->Bookings->where('status',2)->count()}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-purple card-outline">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="card-title" >{{__('Income')}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <i class="fa fa-dollar-sign" style="font-size: 2rem; color: #6f42c1"></i>
+                        <span style="font-size:1.5rem;font-weight: 900; color: #6f42c1">{{Auth()->user()->Bookings->where('status',1)->sum('price')}}</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+
+    <div class="col-lg-12">
 
 
       <div class="card card-primary card-outline">
         <div class="card-body">
-          <h5 class="card-title">{{ __('Reservation') }}</h5>
+          <h5 class="card-title">{{ __('Last 10 New Reservation') }}</h5>
 
-          <p class="card-text">
-            @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
+          <table class="table table-bordered  table-striped table-hover ui-state-hover">
+              <thead>
+              <tr>
+                  <th>{{__('Customer Name')}}</th>
+                  <th>{{__('Server Name')}}</th>
+                  <th>{{__('Booked Date')}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              @foreach(Auth()->user()->Bookings->where('status',0)->take(10) as $book)
+              <tr>
+                  <td>{{$book->customer_type::find($book->customer_id)->name}}</td>
+                  <td>{{$book->bookable_type::find($book->bookable_id)->title}}</td>
+                    @php
+                       $d = explode(" ",$book->ends_at);
 
-        {{ __('You are logged in!') }}
-          </p>
+                    @endphp
+                  <td>Date : {{$d[0]}} <br> Time : {{$d[1]}}</td>
+                  <td>
+                      <div class="btn-group">
+                      <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" type="button">{{__('Completed')}} <i class="fa fa-check-circle"></i> </button>
+
+                      <button class="btn btn-danger" data-toggle="modal" data-target="#rejectModel" type="button">{{__('Rejected')}} <i class="fa fa-ban"></i> </button>
+                      </div>
+                  </td>
+              </tr>
+              @endforeach
+              </tbody>
+          </table>
 
         </div>
       </div><!-- /.card -->
@@ -27,4 +121,94 @@
 
   </div>
   <!-- /.row -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{__("Complete Reservation")}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="completeForm" action="">
+            <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">{{__('Booking Key')}}</label>
+                        <input type="text" id="booking_key" class="form-control" required name="booking_key">
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="rejectModel" tabindex="-1" role="dialog" aria-labelledby="rejectModelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rejectModelLabel">{{__("Reject Reservation")}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="rejectForm" action="">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="">{{__('Booking Key')}}</label>
+                        <input type="text" id="booking_key_rejected" class="form-control" name="booking_key">
+                    </div>
+                    <div class="form-group">
+                        <label for="">{{__('Notes')}}</label>
+                        <textarea class="form-control" name="notes" id="notes" cols="10" rows="5"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@endsection
+@section('script')
+    <script>
+        $("#completeForm").on("submit",function (e) {
+            e.preventDefault();
+            $.ajax({
+                url:"/index.php/Users/reservations/completed/key",
+                type:"POST",
+                data:{
+                    "_token":"{{csrf_token()}}",
+                    "booking_key":$("#booking_key").val()
+                },
+                success : function (data) {
+                    // console.log(data)
+                    location.reload();
+                }
+            })
+        })
+        $("#rejectForm").on("submit",function (e) {
+            e.preventDefault();
+            $.ajax({
+                url:"/index.php/Users/reservations/rejected/key",
+                type:"POST",
+                data:{
+                    "_token":"{{csrf_token()}}",
+                    "booking_key":$("#booking_key_rejected").val(),
+                    "notes":$("#notes").val()
+                },
+                success : function (data) {
+                    location.reload();
+                }
+            })
+        })
+
+    </script>
 @endsection
