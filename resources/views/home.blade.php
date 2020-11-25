@@ -1,6 +1,18 @@
 @extends('layouts.admin-lte')
 @section('breadcrumb', __('Dashboard') )
 @section('content')
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-cyan card-outline">
+                <div class="card-header">
+                    <p class="card-text">Qr Code</p>
+                </div>
+                <div class="card-body">
+                    {!! QrCode::color(23,162,184)->size(300)->generate("https://2urkeybooking.com/provider/".Auth()->user()->username); !!}
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="row">
     <div class="col-md-3">
         <div class="card card-warning card-outline">
@@ -182,7 +194,7 @@
         $("#completeForm").on("submit",function (e) {
             e.preventDefault();
             $.ajax({
-                url:"/index.php/Users/reservations/completed/key",
+                url:"/Users/reservations/completed/key",
                 type:"POST",
                 data:{
                     "_token":"{{csrf_token()}}",
@@ -197,7 +209,7 @@
         $("#rejectForm").on("submit",function (e) {
             e.preventDefault();
             $.ajax({
-                url:"/index.php/Users/reservations/rejected/key",
+                url:"/Users/reservations/rejected/key",
                 type:"POST",
                 data:{
                     "_token":"{{csrf_token()}}",

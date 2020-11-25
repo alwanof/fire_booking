@@ -16,13 +16,14 @@ class MailManager extends Mailable
      *
      * @return void
      */
-     public $name , $key ,$email,$data;
-    public function __construct($name,$key,$email, $data)
+     public $name , $key ,$email,$data,$status;
+    public function __construct($name,$key,$email, $data,$status = "Create")
     {
       $this->name = $name ;
       $this->key = $key ;
       $this->email = $email ;
       $this->data= $data ;
+      $this->status = $status;
 //      dd($data);
     }
 
@@ -33,8 +34,19 @@ class MailManager extends Mailable
      */
     public function build()
     {
-      return $this->from('cloudways@cloudways.com')
-            ->view('mail');
+        if ($this->status =="Completed"){
+                  return $this->from('info@2urkeybooking.com')
+            ->view('mailing.completed');
+
+        }elseif ($this->status =="Rejected"){
+                  return $this->from('info@2urkeybooking.com')
+            ->view('mailing.mail');
+
+        }else{
+                  return $this->from('info@2urkeybooking.com')
+            ->view('mailing.mail');
+
+        }
 
     }
 }

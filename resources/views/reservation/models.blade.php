@@ -1,15 +1,17 @@
 <div class="row">
 
     @foreach($models as $model)
-    <div class="col-md-3" >
+    <div class="col-md-3" style="padding: 0px">
       <a onclick="getServices({{$model->id}})" href="#" style="color:black;">
-      <div class="card mb-4 bg-light box-shadow" style="border:0px; border-radius:25%">
+      <div class="card mb-4 bg-light box-shadow" style="border:0px; ">
         <div class="model_iamges">
           @if($model->video != null)
           <iframe id="video" height="218" width="327"  src="https://www.youtube.com/embed/{{$model->video}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           @endif
           @foreach($model->images as $image)
-          <img class="card-img-top" style="border-radius:20px" data-src="{{$image->path}}" height="218" width="327" src="{{$image->path}}" alt="Card image cap">
+          <img class="card-img-top"
+               data-src="{{asset($image->path)}}"
+               height="218" width="327" src="{{asset($image->path)}}" alt="Card image cap">
           @endforeach
 
 
@@ -21,9 +23,10 @@
           </p>
           <p class="card-text description">
 
-                                  {{Str::limit($model->bio, 100)}}
-                                  <span class="collapse" id="model-{{$model->id}}">{{ $model->bio}}</span>
-                                </span> <a data-toggle="collapse" data-target="#model-{{$model->id}}">More... &raquo;</a>
+              {{Str::limit($model->bio, 100)}}
+              <span class="collapse" id="model-{{$model->id}}">{{ $model->bio}}</span>
+              <br>
+              </span> <a data-toggle="collapse" data-target="#model-{{$model->id}}" style="color:#BE1622;font-weight: bold;">{{__('Read More... >>')}} </a>
           </p>
           <div class="d-flex justify-content-between align-items-center">
 

@@ -40,7 +40,7 @@ class UserController extends Controller
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             $path  = public_path('/uploads/avatars/' . $filename);
             $uploaded_avatar = Image::make($avatar)->resize(300, 300)->save( $path );
-            $user->avatar =  asset('/uploads/avatars/'. $filename);
+            $user->avatar =  '/uploads/avatars/'. $filename;
             }
 
             if($user->save()){
@@ -106,7 +106,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'avatar'=> asset('/uploads/avatars/'. $filename),
+            'avatar'=> '/uploads/avatars/'. $filename,
             'username' => $this->slugify($request->name),
         ]);
 
@@ -144,7 +144,7 @@ class UserController extends Controller
            Mail::to($customer->email)->send(
                new MailManager($customer->name,
                    $request->booking_key,
-                   $customer->email,$booking));
+                   $customer->email,$booking,"Completed"));
 
            return response()->json(["status"=>200,"data"=>$booking]);
        }else{

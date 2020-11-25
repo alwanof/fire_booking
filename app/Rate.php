@@ -4,7 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Rate extends BookableRate
+class Rate extends Model
 {
-    protected $table = 'bookable_rates';
+    public function Service(){
+        return $this->belongsTo(Service::class);
+    }
+
+
+
 }

@@ -18,6 +18,7 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <style media="screen">
     .card-body {
 
@@ -43,21 +44,21 @@
 }
       .steps li {
         display: inline;
-        padding: 15px;
-        border-bottom-left-radius:  20px;
-        border-bottom-right-radius:  20px;
+        padding: 10px;
+
 
       }
       .steps li > a{
         color: black;
       }
       .steps li.active{
-        background: #343a40;
-        border-bottom: 2px solid white;
-        color: white;
+
+        border-bottom: 2px solid #000000;
+        color: #000000;
+        font-weight: bold;
       }
       .steps li.active > a{
-        color: white;
+        color: #000000;
       }
 
       .slick-dotted.slick-slider {
@@ -65,9 +66,9 @@
       }
       .title{
         font-weight: 800 !important;word-break: break-all !important;
-font-size: 25px !important;
-line-height: 25px !important;
-margin-bottom:5px
+        font-size: 25px !important;
+        line-height: 25px !important;
+        margin-bottom:5px
       }
       .description{
         font-size: 15px !important; color:#595959
@@ -76,7 +77,7 @@ margin-bottom:5px
     </style>
   </head>
 
-  <body class="bg-light">
+  <body >
     <header>
       <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -96,37 +97,30 @@ margin-bottom:5px
           </div>
         </div>
       </div>
-      <div class="navbar   navbar-dark bg-dark box-shadow">
+      <div class="navbar  box-shadow" style="border-bottom: 1px solid #bdbcbc">
         <div class="container d-flex justify-content-between">
 
           <a href="#" class="navbar-brand d-flex align-items-center">
-            <img class=""  src="{{$provider->avatar}}" alt="{{$provider->name}}" width="40" height="40">
-            <strong style="margin-left:5px">  {{$provider->name}}</strong>
+            <img class=""  src="{{asset($provider->avatar)}}" alt="{{$provider->name}}" width="40" height="40">
+            <strong style="margin-left:5px;color: black;">  {{$provider->name}}</strong>
+
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button   class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span>
           </button>
         </div>
       </div>
     </header>
 
 
-        <div class=" container d-flex justify-content-between" style="/*! margin-top: 5px; */background: #f8f9fa;/*! padding: 1px; *//*! padding-bottom: 0.3rem; */ ">
-          <ul class="steps float-right" style="margin-bottom: 1rem;padding:0;">
-            <li id="nav_step1" class="active"><a  onclick="goToStep('step1')" href="#">Categories</a> </li>
-            <li id="nav_step2"><a  onclick="goToStep('step2')" href="#">Items</a> </li>
-            <li id="nav_step3"><a  onclick="goToStep('step3')" href="#">Services</a> </li>
-            <li id="nav_step4"><a  onclick="goToStep('step4')" href="#">Finish</a> </li>
-          </ul>
 
-        </div>
 
 
 
 
     <main role="main">
 
-      <div class="album py-5 bg-light">
+      <div class="album py-5 ">
         <div class="container">
           <div class="" id="step1">
             <div class="row " >
@@ -138,7 +132,7 @@ margin-bottom:5px
                     <iframe id="video" height="218" width="327"  src="https://www.youtube.com/embed/{{$category->video}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     @endif
                     @foreach($category->images as $image)
-                    <img class="card-img-top" style="border-radius:20px" data-src="{{$image->path}}" height="218" width="327" src="{{$image->path}}" alt="Card image cap">
+                    <img class="card-img-top" style="border-radius:20px" data-src="{{asset($image->path)}}" height="218" width="327" src="{{asset($image->path)}}" alt="Card image cap">
                     @endforeach
                   </div>
                   <a onclick="getModels({{$category->id}})" href="#" style="color:black;">
@@ -151,7 +145,8 @@ margin-bottom:5px
 
                       {{Str::limit($category->description, 100)}}
                       <span class="collapse" id="viewdetails3">{{ $category->description}}</span>
-                      </span> <a data-toggle="collapse" data-target="#viewdetails3">More... &raquo;</a>
+                        <br>
+                      </span> <a data-toggle="collapse" data-target="#viewdetails3" style="color:#BE1622;font-weight: bold;">{{__('Read More... >>')}}</a>
                     </p>
 
                     <div class="d-flex justify-content-between align-items-center">
@@ -327,7 +322,7 @@ margin-bottom:5px
       function getModels(id) {
         console.log(id);
         $.ajax({
-          url:"/index.php/services/getModels/"+id,
+          url:"/services/getModels/"+id,
           type:"GET",
           success:function(data){
             $("#step1").fadeOut("slow",function(){
@@ -362,7 +357,7 @@ margin-bottom:5px
       function getDates(id) {
 
         $.ajax({
-          url:"/index.php/services/getDates/"+id,
+          url:"/services/getDates/"+id,
           type:"GET",
 
 
@@ -384,7 +379,7 @@ margin-bottom:5px
         $("#Date_label").html(new Date(value*1000).toLocaleDateString('en-GB'));
         $("#date").val(value);
         $.ajax({
-          url:"/index.php/services/getTimes/"+id+"/"+value,
+          url:"/services/getTimes/"+id+"/"+value,
           type:"GET",
 
 
@@ -405,7 +400,7 @@ margin-bottom:5px
 
 
         $.ajax({
-          url:"/index.php/models/getServices/"+id,
+          url:"/models/getServices/"+id,
           type:"GET",
 
 

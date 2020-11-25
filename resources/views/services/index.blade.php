@@ -25,6 +25,7 @@
                     <th>#</th>
                     <th>{{__('Title')}}</th>
                     <th>{{__('Bio')}}</th>
+                    <th>{{__('Rate / Rates Count')}}</th>
                     <th>{{__('Options')}}</th>
                     </tr>
                 </thead>
@@ -40,6 +41,7 @@
                             <td>{{$i}}</td>
                             <td>{{$service->title}}</td>
                             <td>{{$service->bio}}</td>
+                            <td>@if(!empty($service->Rateer)){{$service->calc()}} /{{$service->Rateer->count()}} @endif</td>
                             <td>
                               <div class="btn-group">
                                 <a type="button" href="{{route('services.edit',$service->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
@@ -48,6 +50,8 @@
                                   {{ method_field('DELETE') }}
                                     <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                   </form>
+                                  <a type="button" href="{{route('services.rates',$service->id)}}" class="btn btn-primary"><i class="fas fa-comment"></i></a>
+
                               </div>
                             </td>
                         </tr>

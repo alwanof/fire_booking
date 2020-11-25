@@ -73,7 +73,7 @@ class UserModelController extends Controller
                 $filename = "UM-".$model->id."-".time(). '-'.$a.'.' . $MimeType[1];
                 $path  = public_path('/uploads/models/' . $filename);
                 $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
-                $userModelImage->path = asset('/uploads/models/'. $filename);
+                $userModelImage->path = '/uploads/models/'. $filename;
                 $userModelImage->save();
                 $a++;
             }
@@ -136,7 +136,7 @@ class UserModelController extends Controller
                 $filename = "UM-".$userModel->id."-".time(). '-'.$a.'.' . $MimeType[1];
                 $path  = public_path('/uploads/models/' . $filename);
                 $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
-                $userModelImage->path = asset('/uploads/models/'. $filename);
+                $userModelImage->path = '/uploads/models/'. $filename;
                 $userModelImage->save();
                 $a++;
             }

@@ -7,10 +7,10 @@
   @if(timeAvalibality($service->id,$t_date." ".$time->time.":00") < $amount    )
 
 
-<button type="button" class="btn btn-success" onclick="selectTime('{{$time->time}}')"  data-id="{{$time->time}}" style="float:left; margin-left:10px;">
+<button type="button" class="btn btn-outline-dark" onclick="selectTime('{{$time->time}}')"  data-id="{{$time->time}}" style="float:left; margin-left:10px;">
   {{$time->time}}</button>
   @else
-  <button type="button" class="btn btn-danger" disabled  data-id="{{$time->time}}" style="float:left; margin-left:10px;">
+  <button type="button" class="btn btn-outline-dark" disabled  data-id="{{$time->time}}" style="float:left; margin-left:10px;">
     {{$time->time}}</button>
   @endif
   @endforeach

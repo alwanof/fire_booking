@@ -137,7 +137,7 @@
         $("#completeForm").on("submit",function (e) {
             e.preventDefault();
             $.ajax({
-                url:"/index.php/Users/reservations/completed/key",
+                url:"/Users/reservations/completed/key",
                 type:"POST",
                 data:{
                     "_token":"{{csrf_token()}}",
@@ -151,7 +151,7 @@
         $("#rejectForm").on("submit",function (e) {
             e.preventDefault();
             $.ajax({
-                url:"/index.php/Users/reservations/rejected/key",
+                url:"/Users/reservations/rejected/key",
                 type:"POST",
                 data:{
                     "_token":"{{csrf_token()}}",

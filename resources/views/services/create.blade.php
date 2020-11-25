@@ -160,7 +160,7 @@
   $(function(){
     $(document).ready(function(){
       $.ajax({
-        url:"/index.php/services/TimeSchemaCreator",
+        url:"/services/TimeSchemaCreator",
         type:"POST",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -188,7 +188,7 @@
     ],function(){
 
       $.ajax({
-        url:"/index.php/services/TimeSchemaCreator",
+        url:"/services/TimeSchemaCreator",
         type:"POST",
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

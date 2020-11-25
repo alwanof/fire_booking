@@ -67,7 +67,7 @@ class CategoryController extends Controller
                     $filename = "C-".$category->id."-".time() . '-'.$a.'.' . $MimeType[1];
                     $path  = public_path('/uploads/categories/' . $filename);
                     $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
-                    $category_image->path = asset('/uploads/categories/'. $filename);
+                    $category_image->path = '/uploads/categories/'. $filename;
                     $category_image->save();
                     $a++;
                 }
@@ -129,7 +129,7 @@ class CategoryController extends Controller
                     $filename = "C-".$category->id."-".time() . '-'.$a.'.' . $MimeType[1];
                     $path  = public_path('/uploads/categories/' . $filename);
                     $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
-                    $category_image->path = asset('/uploads/categories/'. $filename);
+                    $category_image->path = '/uploads/categories/'. $filename;
                     $category_image->save();
                     $a++;
                 }

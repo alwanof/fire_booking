@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home')->middleware('auth');
+Route::get('/test/',"RateController@index");
+
 
 Auth::routes();
 
@@ -70,10 +72,12 @@ Route::resources([
     'model' => UserModelController::class,
     'services' => ServiceController::class,
     'customer' => CustomerController::class,
+    'rate' => RateController::class,
 ]);
 Route::get('/customer/{customer}/reservations','CustomerController@reservations')->name('customer.reservations');
 Route::post('/services/TimeSchemaCreator','ServiceController@TimeSchemaCreator');
 Route::post('/services/update/{service}','ServiceController@update')->name('services.update1');
+Route::get('/services/rates/{service}','ServiceController@Rates')->name('services.rates');
 Route::get('/services/getDates/{service}','ServiceController@getDates');
 Route::get('/services/getModels/{id}','ServiceController@getModels');
 Route::get('/services/getTimes/{service}/{date}','ServiceController@getTimes');
@@ -83,3 +87,4 @@ Route::post('/provider/{username}/reservation','HomeController@reservation')->na
 Route::post('/category_image/{categoryImage}','CategoryImageController@delete')->name(  'category_image.destroy' );
 Route::post('/service_image/{serviceImage}','ServiceImageController@delete')->name(  'service_image.destroy' );
 Route::post('/model_image/{userModelImage}','UserModelImageController@delete')->name(  'model_image.destroy' );
+Route::get('Rate/Service/Customer/{id}/{customer}','RateController@rate')->name('rate.customer');

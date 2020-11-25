@@ -126,7 +126,7 @@ class ServiceController extends Controller
                     $filename = "S-".$service->id."-".time() . '-'.$a.'.' . $MimeType[1];
                     $path  = public_path('/uploads/services/' . $filename);
                     $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
-                    $service_image->path = asset('/uploads/services/'. $filename);
+                    $service_image->path = '/uploads/services/'. $filename;
                     $service_image->save();
                     $a++;
                 }
@@ -198,6 +198,10 @@ class ServiceController extends Controller
 
       return view('services.timep',compact('service','times','t_date','amount'));
     }
+    public function Rates (Service $service){
+       $rates =  $service->Rateer;
+       return view('services.rates',compact('rates'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -237,7 +241,7 @@ class ServiceController extends Controller
                     $filename = "S-".$service->id."-".time() . '-'.$a.'.' . $MimeType[1];
                     $path  = public_path('/uploads/services/' . $filename);
                     $uploaded_avatar = Image::make($photo)->resize(300, 300)->save( $path );
-                    $service_image->path = asset('/uploads/services/'. $filename);
+                    $service_image->path = '/uploads/services/'. $filename;
                     $service_image->save();
                     $a++;
                 }
