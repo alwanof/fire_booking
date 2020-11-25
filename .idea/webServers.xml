@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="3555fd7d-14cd-47ab-9fe8-ef63067b5cba" name="2urkeybooking" url="http://2urkeybooking.com/index.php">
+        <fileTransfer rootFolder="/home/2urkeybooking.com/public_html" accessType="SFTP" host="142.93.174.231" port="22" sshConfigId="f3fbb1dc-9250-4405-9c30-1365339995eb" sshConfig="root@142.93.174.231:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
