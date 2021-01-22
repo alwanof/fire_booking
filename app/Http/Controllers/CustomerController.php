@@ -4,40 +4,42 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
-      $customers = Customer::where('user_id',Auth()->user()->id)->get();
-      return view('customer.index',compact('customers'));
+        $customers = Customer::where('user_id', Auth()->user()->id)->get();
+        return view('customer.index', compact('customers'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
         //
     }
+
     public function reservations(Customer $customer)
     {
-      $bookings =  $customer->bookings;
-      return view('customer.reservations',compact('bookings','customer'));
+        $bookings = $customer->bookings;
+        return view('customer.reservations', compact('bookings', 'customer'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -47,8 +49,8 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param Customer $customer
+     * @return Response
      */
     public function show(Customer $customer)
     {
@@ -58,8 +60,8 @@ class CustomerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param Customer $customer
+     * @return Response
      */
     public function edit(Customer $customer)
     {
@@ -69,9 +71,9 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Customer $customer
+     * @return Response
      */
     public function update(Request $request, Customer $customer)
     {
@@ -81,8 +83,8 @@ class CustomerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Customer  $customer
-     * @return \Illuminate\Http\Response
+     * @param Customer $customer
+     * @return Response
      */
     public function destroy(Customer $customer)
     {

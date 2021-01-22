@@ -40,7 +40,7 @@ class MailManager extends Mailable
 
         }elseif ($this->status =="Rejected"){
                   return $this->from('info@2urkeybooking.com')
-            ->view('mailing.mail');
+            ->view('mailing.rejected');
 
         }else{
                   return $this->from('info@2urkeybooking.com')

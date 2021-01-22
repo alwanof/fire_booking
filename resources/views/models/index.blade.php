@@ -47,7 +47,8 @@
                             <td>{{$model->bio}}</td>
                             <td>
                               <div class="btn-group">
-                                <a type="button" href="{{route('model.edit',$model->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                                <a type="button" href="{{route('model.duplicate',$model->id)}}" class="btn btn-primary"><i class="fas fa-clone"></i></a>
+                                  <a type="button" href="{{route('model.edit',$model->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                   <form action="{{route('model.destroy',$model->id)}}" method="post">
                                       {{ csrf_field() }}
                                       {{ method_field('DELETE') }}

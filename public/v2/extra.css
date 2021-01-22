@@ -1,0 +1,102 @@
+.card-list{
+    padding-left: 0px;
+    color: #50931F;
+}
+.weekly-product-card .product-description .sale-price{
+    font-size: 20px;
+}
+.weekly-product-card .product-description .sale-price > sub {
+    padding-right: 2px;
+}
+.weekly-product-card .product-description .product-title{
+    font-size: 22px;
+}
+.weekly-product-card .product-thumbnail-side .product-thumbnail img{
+    border-radius: 15px;
+}
+.next-btn{
+    font-size: 20px;
+    border-radius: 25px;
+}
+.next-btn  i {
+    background-color: white;
+    font-size: 20px;
+} 
+
+.card-title{
+    margin-left: 1rem;margin-bottom: 0rem;margin-top: 1rem;padding: 0px;
+}
+.sp-btn{
+    background-color: #C22626;
+    border-radius: 25px;
+    height:0;
+}
+.card-list-checkbox{
+    padding-left: 0px;
+    color: #50931F;
+    font-size: 12px;
+}
+.card-list-checkbox input{
+    margin: 3px;
+}
+.sp-header{
+    margin-bottom: -1rem;
+}
+.blog-details-post-thumbnail .post-bookmark{
+    background-color: #FDB526;
+}
+.single-product-slide, .blog-details-post-thumbnail{
+    height: 260px;
+}
+.cta-area .cta-text{
+    height: 160px;
+}
+
+ .cta-area .cta-text h4{
+    margin-top: 4rem;
+}
+.cta-area .cta-text p {
+    font-size: 11px;
+}
+
+.cta-area .cta-text::after {
+	background: linear-gradient(to bottom, #FFF0, #0000006b);
+
+}
+.order-success-wrapper .marker {
+	display: inline-block;
+	font-size: 5rem;
+	margin-bottom: 1rem;
+	color: #4FA80F;
+	border: 50px solid #6E806100;
+	border-radius: 50%;
+	background: #50931F66;
+}
+.card-new{
+    border-color: #50931F !important;
+}
+.finish-list p , .finish-list i{
+    font-size: 14px;
+    text-align: left;
+}
+.price-finish{
+    font-weight: 600;
+    font-size: 18px !important;
+    color: black !important;
+}
+.price-finish strong{
+    font-size: 22px;
+    color: black !important;
+
+}
+
+.vat-price{
+    font-size: 10px;
+}
+.sp-text{
+    text-align: left;
+    color: black !important;
+}
+.sp-text span{
+    color: #50931F;
+}

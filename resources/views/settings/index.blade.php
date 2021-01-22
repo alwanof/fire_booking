@@ -13,7 +13,7 @@
             <h3 class="card-title">{{__('Settings Managment')}}</h3>
 
             <div class="card-tools">
-              
+
             </div>
           </div>
           <!-- /.card-header -->
@@ -30,11 +30,11 @@
                 </thead>
                 <tbody>
                     @php
-                        $i=0;   
+                        $i=0;
                     @endphp
                     @foreach ($settings as $setting)
                     @php
-                        $i++    
+                        $i++
                     @endphp
                         <tr id="#user{{$setting->id}}">
                             <td>{{$i}}</td>
@@ -43,7 +43,11 @@
                             <td>
                               <div class="btn-group">
                                 <a type="button" href="{{route('settings.edit',$setting->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
-                                <button type="button"  class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                  <form action="{{route('settings.destroy',$setting->id)}}" method="POST">
+                                      @method("DELETE")
+                                      @csrf
+                                  <button type="submit"  class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                  </form>
                               </div>
                             </td>
                         </tr>
@@ -54,7 +58,7 @@
           <div class="card-footer">
                 <div class="row">
                     <div class="col-12">
-                     
+
                     </div>
                 </div>
           </div>
@@ -80,9 +84,10 @@
                   <select name="configuration_id" class="form-control" id="">
                     <option value="">{{__('Select Configuration')}}</option>
                     @foreach ($configurations as $config)
-                        
+                    @if(!\App\Setting::where('configuration_id',$config->id)->first())
                     <option value="{{$config->id}}">{{$config->key}}</option>
-                    @endforeach 
+                    @endif
+                    @endforeach
                   </select>
               </div>
               <div class="form-group">
@@ -100,5 +105,5 @@
       </div>
       <!-- /.modal-dialog -->
     </div>
-    
+
 @endsection

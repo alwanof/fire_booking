@@ -6,27 +6,29 @@ use App\Setting;
 use App\User;
 use App\Configuration;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Spatie\Permission\Models\Role;
 use App\RoleConfiguration;
+
 class SettingController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
 
         $configurations = auth()->user()->GetAvilableConfig();
         $settings = Setting::all();
-        return view('settings.index',compact('settings','configurations'));
+        return view('settings.index', compact('settings', 'configurations'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -36,16 +38,16 @@ class SettingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
-      $request->validate([
-          'value' => ['required', 'string', 'max:255'],
-          'configuration_id' => ['required']
+        $request->validate([
+            'value' => ['required', 'string', 'max:255'],
+            'configuration_id' => ['required']
 
-      ]);
+        ]);
         $setting = new Setting;
         $setting->value = $request->value;
         $setting->configuration_id = $request->configuration_id;
@@ -56,8 +58,8 @@ class SettingController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Setting  $setting
-     * @return \Illuminate\Http\Response
+     * @param Setting $setting
+     * @return Response
      */
     public function show(Setting $setting)
     {
@@ -67,8 +69,8 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Setting  $setting
-     * @return \Illuminate\Http\Response
+     * @param Setting $setting
+     * @return Response
      */
     public function edit(Setting $setting)
     {
@@ -78,9 +80,9 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Setting  $setting
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Setting $setting
+     * @return Response
      */
     public function update(Request $request, Setting $setting)
     {
@@ -90,11 +92,13 @@ class SettingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Setting  $setting
-     * @return \Illuminate\Http\Response
+     * @param Setting $setting
+     * @return Response
      */
     public function destroy(Setting $setting)
     {
-        //
+       if ( $setting->delete()){
+           return redirect()->route('settings.index');
+       }
     }
 }

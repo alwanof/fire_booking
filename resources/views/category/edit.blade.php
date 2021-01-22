@@ -37,6 +37,12 @@
                 <label for="">{{__('Description')}}</label>
                 <textarea name="description" class="form-control" rows="5" cols="50" required>{{$category->description}}</textarea>
             </div>
+                @foreach(json_decode($category->description_list) as $description_list)
+                <div class="form-group">
+                <label for="">{{__('Description List')}}</label>
+                <input type="text" class="form-control" name="description_list[]" value="{{$description_list}}" placeholder="{{__('Description List')}}" required>
+            </div>
+                    @endforeach
 
           <div class="form-group">
               <input id="input-b3" name="avatar[]"  type="file" class="file" multiple

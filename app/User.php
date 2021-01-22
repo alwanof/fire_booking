@@ -54,8 +54,16 @@ class User extends Authenticatable
     public function Bookings (){
         return $this->hasMany(Booking::class);
     }
+    public function Settings (){
+        return $this->hasMany(Setting::class);
+    }
 
-
+    public function CustomFields(){
+        return $this->hasMany(CustomField::class);
+    }
+    public function Services () {
+        return $this->hasMany(Service::class);
+    }
     public function GetAvilableConfig()
     {
         return $this->roles->first()->configurations()->get();

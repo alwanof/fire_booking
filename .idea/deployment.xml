@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="2urkeybooking">
+  <component name="PublishConfigData" autoUpload="Always" serverName="2urkeybooking_ftp">
     <serverData>
-      <paths name="2urkeybooking">
+      <paths name="2urkeybooking_ftp">
         <serverdata>
           <mappings>
             <mapping deploy="/" local="$PROJECT_DIR$" web="/" />
-            <mapping local="" />
           </mappings>
         </serverdata>
       </paths>

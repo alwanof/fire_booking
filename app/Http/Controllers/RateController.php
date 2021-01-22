@@ -8,13 +8,14 @@ use App\Rate;
 
 use App\Service;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RateController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -25,36 +26,36 @@ class RateController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function rate($id,Customer $customer)
+    public function rate($id, Customer $customer)
     {
 
         $service = Service::findOrFail(decrypt($id));
-        return view('reservation.rate_service',compact('customer','id'));
+        return view('reservation.rate_service', compact('customer', 'id'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
 //        return $request->all();
-        $customer= Customer::find($request->customer_id);
+        $customer = Customer::find($request->customer_id);
         $rate = new Rate();
         $rate->service_id = Service::find(decrypt($request->service_id))->id;
         $rate->name = $customer->name;
         $rate->email = $customer->email;
         $rate->rate = $request->rate;
         $rate->note = $request->note;
-        if ($rate->save()){
-        return redirect()->back();
+        if ($rate->save()) {
+            return redirect()->back();
 
-        }else{
-        return redirect()->back();
+        } else {
+            return redirect()->back();
 
         }
     }
@@ -62,8 +63,8 @@ class RateController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rate  $rate
-     * @return \Illuminate\Http\Response
+     * @param Rate $rate
+     * @return Response
      */
     public function show(Rate $rate)
     {
@@ -73,8 +74,8 @@ class RateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rate  $rate
-     * @return \Illuminate\Http\Response
+     * @param Rate $rate
+     * @return Response
      */
     public function edit(Rate $rate)
     {
@@ -84,9 +85,9 @@ class RateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rate  $rate
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Rate $rate
+     * @return Response
      */
     public function update(Request $request, Rate $rate)
     {
@@ -96,8 +97,8 @@ class RateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rate  $rate
-     * @return \Illuminate\Http\Response
+     * @param Rate $rate
+     * @return Response
      */
     public function destroy(Rate $rate)
     {

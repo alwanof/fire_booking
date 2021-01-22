@@ -104,38 +104,38 @@
             @can('Manage Setting')
             <li class="nav-item">
               <a href="{{route('settings.index')}}" class="nav-link ">
-                <i class="nav-icon fas fa-globe"></i>
+                <i class="nav-icon fas fa-cogs"></i>
                 <p>{{__('Settings Management')}}</p>
               </a>
             </li>
             @endcan
             <li class="nav-item">
               <a href="{{route('category.index')}}" class="nav-link ">
-                <i class="nav-icon fas fa-globe"></i>
+                <i class="nav-icon fas fa-plug"></i>
                 <p>{{__('Categories Management')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('model.index')}}" class="nav-link ">
-                <i class="nav-icon fas fa-globe"></i>
+                <i class="nav-icon fas fa-key"></i>
                 <p>{{__('Models Management')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('services.index')}}" class="nav-link ">
-                <i class="nav-icon fas fa-globe"></i>
+                <i class="nav-icon fas fa-cog"></i>
                 <p>{{__('Services Management')}}</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="{{route('customer.index')}}" class="nav-link ">
-                <i class="nav-icon fas fa-globe"></i>
+                <i class="nav-icon fas fa-users"></i>
                 <p>{{__('Customers Management')}}</p>
               </a>
             </li>
               <li class="nav-item has-treeview">
                   <a href="#" class="nav-link ">
-                      <i class="nav-icon fas fa-globe"></i>
+                      <i class="nav-icon fas fa-calendar"></i>
                       <p>{{__('Reservations Management')}}</p>
                   </a>
                   <ul class="nav nav-treeview">
@@ -159,6 +159,20 @@
                       </li>
                   </ul>
               </li>
+               <li class="nav-item">
+                  <a href="{{route('custom_fields.index')}}" class="nav-link ">
+                    <i class="nav-icon fas fa-info"></i>
+                    <p>{{__('Custom Fields')}}</p>
+                  </a>
+                </li>
+              @if(auth()->user()->Settings()->where('configuration_id',8)->first())
+              <li class="nav-item">
+                  <a href="{{route('age_group_discount.index')}}" class="nav-link ">
+                    <i class="nav-icon fas fa-info"></i>
+                    <p>{{__('Age Group Discount')}}</p>
+                  </a>
+                </li>
+                  @endif
 
 
           </ul>

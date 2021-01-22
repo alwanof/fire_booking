@@ -29,7 +29,7 @@
                         </thead>
                         <tbody>
                         @php
-                            $i=0;
+                            $i=0
                         @endphp
                         @foreach ($reservations as $reservation)
                             @php
@@ -43,19 +43,23 @@
                                 <td>
                                     @if($reservation->status == 0)
                                         <span class="badge badge-warning">Pending</span>
-                                        @elseif($reservation->status == 1)
+                                    @elseif($reservation->status == 1)
                                         <span class="badge badge-success">Completed</span>
-                                        @elseif($reservation->status == 2)
-                                            <span class="badge badge-danger">Rejected</span>
+                                    @elseif($reservation->status == 2)
+                                        <span class="badge badge-danger">Rejected</span>
                                     @endif
                                 </td>
                                 <td>
                                     <div class="btn-group">
                                         @if($reservation->status != 1)
-                                        <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" type="button">{{__('Completed')}} <i class="fa fa-check-circle"></i> </button>
+                                            <button class="btn btn-success" data-toggle="modal"
+                                                    data-target="#exampleModal" type="button">{{__('Completed')}} <i
+                                                    class="fa fa-check-circle"></i></button>
                                         @endif
                                         @if($reservation->status != 2)
-                                        <button class="btn btn-danger" data-toggle="modal" data-target="#rejectModel" type="button">{{__('Rejected')}} <i class="fa fa-ban"></i> </button>
+                                            <button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#rejectModel" type="button">{{__('Rejected')}} <i
+                                                    class="fa fa-ban"></i></button>
                                         @endif
                                     </div>
                                 </td>
@@ -77,7 +81,8 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -102,7 +107,8 @@
         </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="rejectModel" tabindex="-1" role="dialog" aria-labelledby="rejectModelLabel" aria-hidden="true">
+    <div class="modal fade" id="rejectModel" tabindex="-1" role="dialog" aria-labelledby="rejectModelLabel"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -119,7 +125,8 @@
                         </div>
                         <div class="form-group">
                             <label for="">{{__('Notes')}}</label>
-                            <textarea class="form-control" name="notes" required id="notes" cols="10" rows="5"></textarea>
+                            <textarea class="form-control" name="notes" required id="notes" cols="10"
+                                      rows="5"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -134,31 +141,31 @@
 @endsection
 @section('script')
     <script>
-        $("#completeForm").on("submit",function (e) {
+        $("#completeForm").on("submit", function (e) {
             e.preventDefault();
             $.ajax({
-                url:"/Users/reservations/completed/key",
-                type:"POST",
-                data:{
-                    "_token":"{{csrf_token()}}",
-                    "booking_key":$("#booking_key").val()
+                url: "/Users/reservations/completed/key",
+                type: "POST",
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    "booking_key": $("#booking_key").val()
                 },
-                success : function (data) {
+                success: function (data) {
                     location.reload();
                 }
             })
         })
-        $("#rejectForm").on("submit",function (e) {
+        $("#rejectForm").on("submit", function (e) {
             e.preventDefault();
             $.ajax({
-                url:"/Users/reservations/rejected/key",
-                type:"POST",
-                data:{
-                    "_token":"{{csrf_token()}}",
-                    "booking_key":$("#booking_key_rejected").val(),
-                    "notes":$("#notes").val()
+                url: "/Users/reservations/rejected/key",
+                type: "POST",
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    "booking_key": $("#booking_key_rejected").val(),
+                    "notes": $("#notes").val()
                 },
-                success : function (data) {
+                success: function (data) {
                     location.reload();
                 }
             })

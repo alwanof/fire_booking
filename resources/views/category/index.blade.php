@@ -43,6 +43,7 @@
                             <td>{{$category->description}}</td>
                             <td>
                               <div class="btn-group">
+                                <a type="button" href="{{route('category.duplicate',$category->id)}}" class="btn btn-primary"><i class="fas fa-clone"></i></a>
                                 <a type="button" href="{{route('category.edit',$category->id)}}" class="btn btn-warning"><i class="fas fa-edit"></i></a>
                                 <form action="{{route('category.destroy',$category->id)}}" method="post">
                                   {{ csrf_field() }}
@@ -92,6 +93,14 @@
             <div class="form-group">
                 <label for="">{{__('Description')}}</label>
                 <textarea name="description" class="form-control" rows="5" cols="50" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="">{{__('1. Description List')}}</label>
+                <input type="text" class="form-control" name="description_list[]" placeholder="{{__('Description List')}}" required>
+            </div>
+            <div class="form-group">
+                <label for="">{{__('2. Description List')}}</label>
+                <input type="text" class="form-control" name="description_list[]" placeholder="{{__('Description List')}}" required>
             </div>
 
             <div class="form-group">

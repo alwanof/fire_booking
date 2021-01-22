@@ -1,0 +1,106 @@
+.card-body {
+
+
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+@media (max-width: 480px) {
+    .slick-slide {
+        height: 218px;
+        width: 327px;
+    }
+
+    .slick-slide img {
+        height: 218px;
+        width: 327px;
+    }
+}
+
+.slick-dots {
+    bottom: 0px;
+}
+
+.slick-dots li.slick-active button:before {
+    color: white !important;
+}
+
+.steps li {
+    display: inline;
+    padding: 10px;
+
+
+}
+
+.steps li > a {
+    color: black;
+}
+
+.steps li.active {
+
+    border-bottom: 2px solid #000000;
+    color: #000000;
+    font-weight: bold;
+}
+
+.steps li.active > a {
+    color: #000000;
+}
+
+.slick-dotted.slick-slider {
+    margin-bottom: 5px;
+}
+
+.title {
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-transform: uppercase;
+    margin-bottom: 1px;
+}
+
+.description {
+    font-size: 15px !important;
+    color: #595959;
+    text-transform: lowercase;
+}
+
+.description::first-letter {
+    text-transform: uppercase;
+}
+
+.model_iamges > .slick-list > .slick-track {
+    height: 500px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .model_iamges > .slick-list > .slick-track {
+        height: 100%;
+    }
+}
+
+.model_body {
+    padding: 0px;
+}
+
+.images > .slick-list {
+    border-radius: 10px;
+}
+
+.categories_btn {
+    border-radius: 25px;
+    line-height: 1;
+}
+
+.provider-img {
+    width: 4em;
+}
+
+.checked {
+    color: orange;
+}
