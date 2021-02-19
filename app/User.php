@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','username', 'email', 'password', 'avatar','username'
+        'name','username', 'email', 'password', 'avatar','username','hotel_commission','our_commission'
     ];
 
     /**
@@ -67,5 +67,8 @@ class User extends Authenticatable
     public function GetAvilableConfig()
     {
         return $this->roles->first()->configurations()->get();
+    }
+    public function Arguments(){
+        return $this->hasOne(Argument::class);
     }
 }

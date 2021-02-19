@@ -173,7 +173,30 @@
                   </a>
                 </li>
                   @endif
-
+            @can('Manage Setting')
+            <li class="nav-item">
+              <a href="{{route('cancel_policy.index')}}" class="nav-link ">
+                <i class="nav-icon fas fa-ban"></i>
+                <p>{{__('Cancel Policy')}}</p>
+              </a>
+            </li>
+            @endcan
+              @can('Manage Setting')
+            <li class="nav-item">
+              <a href="{{route('arguments.index')}}" class="nav-link ">
+                <i class="nav-icon fas fa-pager"></i>
+                <p>{{__('Arguments')}}</p>
+              </a>
+            </li>
+            @endcan
+              @can('Manage Setting')
+            <li class="nav-item">
+              <a href="{{route('reports.provider')}}" class="nav-link ">
+                <i class="nav-icon fas fa-pager"></i>
+                <p>{{__('My Reports')}}</p>
+              </a>
+            </li>
+            @endcan
 
           </ul>
         </nav>

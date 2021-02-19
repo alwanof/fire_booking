@@ -31,6 +31,7 @@
     "Guard Name":"",
     "Permission Name":"",
     "Select Guard":"",
-    "Edit Permission":""
+    "Edit Permission":"",
+    "mail_massage": "Hello World"
 
 }

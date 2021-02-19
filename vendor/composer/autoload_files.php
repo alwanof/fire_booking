@@ -35,4 +35,5 @@ return array(
     '573214ce1ef6f18100c43e366703d73c' => $vendorDir . '/rinvex/laravel-support/src/Support/helpers.php',
     'b6b991a57620e2fb6b2f66f03fe9ddc2' => $vendorDir . '/symfony/string/Resources/functions.php',
     '377b22b161c09ed6e5152de788ca020a' => $vendorDir . '/spatie/laravel-permission/src/helpers.php',
+    '559dba61bcaafa74db6aa5e7e8759117' => $baseDir . '/app/Http/Helpers.php',
 );

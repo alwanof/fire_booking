@@ -1,22 +1,12 @@
-<div class="col-xs-12" style="">
-
-    <div style="width:75vw;  overflow:hidden;" id="tarihSelector" class="add_height">
-        <div style="display:flex; overflow-x: scroll; padding-bottom:5px;" id="pills_holder">
-            @foreach($times as $time)
+            <option value="">Select Time</option>
+                 @foreach($times as $time)
                 @if(timeAvalibality($service->id,$t_date." ".$time->time.":00") < $amount    )
-                    <button type="button" class="btn btn-outline-dark"
-                            onclick="selectTime('{{$time->time}}')" data-id="{{$time->time}}"
-                            style="float:left; margin-left:10px;">
-                        {{$time->time}}</button>
+
+                    <option  value="{{$time->time}}">{{$time->time}}</option>
                 @else
-                    <button type="button" class="btn btn-outline-dark" disabled data-id="{{$time->time}}"
-                            style="float:left; margin-left:10px;">
-                        {{$time->time}}</button>
+                    <option disabled value="{{$time->time}}">{{$time->time}}</option>
+
                 @endif
             @endforeach
 
-        </div>
-    </div>
-    <span style="height:10px; display:block;">&nbsp;</span>
-    <input type="hidden" name="time" id="time" style="display:none;" readonly="" class="hasDatepicker" value="">
-</div>
+

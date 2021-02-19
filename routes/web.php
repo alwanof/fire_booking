@@ -36,6 +36,8 @@ Route::group(['prefix' => 'Users', 'middleware' => 'auth'], function () {
     Route::post('/reservations/completed/key', 'UserController@reservations_completed_mark')->name('user.reservations.completed.mark');
     Route::get('/reservations/rejected', 'UserController@reservations_rejected')->name('user.reservations.rejected');
     Route::post('/reservations/rejected/key', 'UserController@reservations_rejected_mark')->name('user.reservations.rejected.mark');
+    Route::get('/reservations/view/{booking}','UserController@reservations_view')->name('reservations.view');
+    Route::get('/reports/provider','UserController@provider_reports')->name('reports.provider');
 });
 Route::group(['prefix' => 'Roles', 'middleware' => ['auth', 'permission:Manage Role']], function () {
     Route::get('roles', 'RoleController@index')->name('roles.index');
@@ -70,7 +72,9 @@ Route::resources([
     'customer' => CustomerController::class,
     'rate' => RateController::class,
     'custom_fields'=>CustomFieldController::class,
-    'age_group_discount'=>AgeGroupDiscountController::class
+    'age_group_discount'=>AgeGroupDiscountController::class,
+    'cancel_policy'=>CancelPolicyController::class,
+    'arguments'=>ArgumentController::class,
 ]);
 Route::get('/category/duplicate/{category}','CategoryController@duplicate')->name('category.duplicate');
 Route::post('/category/getModels/','CategoryController@getModels')->name('category.getModels');
@@ -88,15 +92,23 @@ Route::get('models/getServices/{UserModel}', 'UserModelController@getServices');
 
 // Provider Screen
 Route::get('/provider/{username}', 'HomeController@provider')->name('provider');
+Route::get('/provider/{username}/search/', 'HomeController@search')->name('provider.search');
 Route::post('/provider/{username}/reservation', 'HomeController@reservation')->name('customer.reservation');
 Route::get('/provider/{username}/{category}', 'HomeController@ProviderCategory')->name('ProviderCategory');
 Route::get('/provider/{username}/{model}/Services/', 'HomeController@ProviderServices')->name('ProviderServices');
 Route::post('/provider/{provider}/{service}/finish','HomeController@reservation_form')->name('reservation_form');
+Route::post('/services/price_calculate/{service}','ServiceController@price_calculate');
+
+Route::get('/arguments/provider/{username}','ArgumentController@provider_arguments')->name('provider.provider_arguments');
+Route::get('/customer/provider/{username}/form','CustomerController@reservation_form')->name('customer_front.reservation_form');
+Route::get('/customer/provider/{username}','CustomerController@reservation')->name('customer_front.reservation');
+Route::get('/customer/provider/{username}/cancel','CustomerController@reservation_cancel')->name('customer_front.reservation_cancel');
+Route::post('/customer/provider/{username}/cancel','CustomerController@reservation_cancel_process')->name('customer_front.reservation_cancel_process');
 
 Route::post('/category_image/{categoryImage}', 'CategoryImageController@delete')->name('category_image.destroy');
 Route::post('/service_image/{serviceImage}', 'ServiceImageController@delete')->name('service_image.destroy');
 Route::post('/model_image/{userModelImage}', 'UserModelImageController@delete')->name('model_image.destroy');
 Route::get('Rate/Service/Customer/{id}/{customer}', 'RateController@rate')->name('rate.customer');
 
-
+Route::get('/test/mail','HomeController@mailTest');
 Route::get('/mind','HomeController@mind');

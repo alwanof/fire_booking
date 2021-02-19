@@ -36,6 +36,7 @@ class ComposerStaticInitc2e4bc04fb8b37cf39e0e4b353487eda
         '573214ce1ef6f18100c43e366703d73c' => __DIR__ . '/..' . '/rinvex/laravel-support/src/Support/helpers.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         '377b22b161c09ed6e5152de788ca020a' => __DIR__ . '/..' . '/spatie/laravel-permission/src/helpers.php',
+        '559dba61bcaafa74db6aa5e7e8759117' => __DIR__ . '/../..' . '/app/Http/Helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -561,9 +562,11 @@ class ComposerStaticInitc2e4bc04fb8b37cf39e0e4b353487eda
 
     public static $classMap = array (
         'App\\AgeGroupDiscount' => __DIR__ . '/../..' . '/app/AgeGroupDiscount.php',
+        'App\\Argument' => __DIR__ . '/../..' . '/app/Argument.php',
         'App\\Avaliability' => __DIR__ . '/../..' . '/app/Avaliability.php',
         'App\\BookableRate' => __DIR__ . '/../..' . '/app/BookableRate.php',
         'App\\Booking' => __DIR__ . '/../..' . '/app/Booking.php',
+        'App\\CancelPolicy' => __DIR__ . '/../..' . '/app/CancelPolicy.php',
         'App\\Category' => __DIR__ . '/../..' . '/app/Category.php',
         'App\\CategoryImage' => __DIR__ . '/../..' . '/app/CategoryImage.php',
         'App\\Configuration' => __DIR__ . '/../..' . '/app/Configuration.php',
@@ -571,12 +574,14 @@ class ComposerStaticInitc2e4bc04fb8b37cf39e0e4b353487eda
         'App\\CustomField' => __DIR__ . '/../..' . '/app/CustomField.php',
         'App\\Customer' => __DIR__ . '/../..' . '/app/Customer.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AgeGroupDiscountController' => __DIR__ . '/../..' . '/app/Http/Controllers/AgeGroupDiscountController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\CancelPolicyController' => __DIR__ . '/../..' . '/app/Http/Controllers/CancelPolicyController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\CategoryImageController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryImageController.php',
         'App\\Http\\Controllers\\ConfigurationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ConfigurationController.php',

@@ -36,7 +36,8 @@ class UserController extends Controller
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
-
+        $user->our_commission = $request->our_commission;
+        $user->hotel_commission = $request->hotel_commission;
         if ($request->hasfile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
@@ -84,6 +85,8 @@ class UserController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'hotel_commission'=>$request->hotel_commission,
+            'our_commission'=>$request->our_commission,
             'password' => Hash::make($request->password),
             'avatar' => '/uploads/avatars/' . $filename,
             'username' => $this->slugify($request->name),
@@ -181,6 +184,15 @@ class UserController extends Controller
         } else {
             return response()->json(["status" => 600]);
         }
+    }
+    public function reservations_view($booking){
+//        return $booking;
+       $book = Auth()->user()->Bookings->find($booking);
+        return view('users.reservationsView',compact('book'));
+    }
+    public function provider_reports(){
+        $bookings =   Auth()->user()->Bookings->where('status',1);
+        return view('users.reports',compact('bookings'));
     }
 
 

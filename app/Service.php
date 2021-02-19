@@ -80,4 +80,8 @@ class Service extends Model
             return 0;
         }
     }
+    public function CancelPolicy(){
+        return $this->belongsTo(CancelPolicy::class);
+    }
+
 }

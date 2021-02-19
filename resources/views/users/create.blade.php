@@ -40,6 +40,14 @@
             <label for="inputName">{{__('Password (Confirm)')}}</label>
             <input type="password" name="password_confirmation" class="form-control" placeholder="{{__('Password (Confirm)')}}">
           </div>
+            <div class="form-group">
+            <label for="inputName">{{__('Our Commission')}}</label>
+            <input type="text" name="our_commission" class="form-control" placeholder="{{__('Our Commission')}}">
+          </div>
+                <div class="form-group">
+            <label for="inputName">{{__('Hotel Commission')}}</label>
+            <input type="text" name="hotel_commission" class="form-control" placeholder="{{__('Hotel Commission')}}">
+          </div>
 
           <div class="form-group">
             <label for="inputName">{{__('Avatar')}}</label>

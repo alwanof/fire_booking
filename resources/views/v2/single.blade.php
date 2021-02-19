@@ -22,7 +22,7 @@
                 <div class="card-body d-flex align-items-center">
                     <div class="product-thumbnail-side">
                         <span class="badge"><div class="product-rating">
-                            <i class="lni lni-star-filled" style="color:#FDB526"></i> 4.88 (39)</div></span>
+                            <i class="lni lni-star-filled" style="color:#FDB526"></i> </div></span>
                       <a class="product-thumbnail d-block" href="#">
                         <img src="{{asset($model->Images->first()->path)}}" alt=""></a>
                       </div>
@@ -31,13 +31,13 @@
                       <form action="{{route('ProviderServices',['username'=>$provider->username,'model'=>$model->id])}}">
                         <ul class="card-list-checkbox">
                             @foreach($model->Services as $service)
-                            <li > <input type="radio" name="service" value="{{$service->id}}" id="">{{$service->title}} -
+                            <li > <input type="radio" name="service" value="{{$service->id}}" required id="">{{$service->title}} -
                                 {{price_format_front($service->price,$provider)}}
                                 (for per person) </li>
                             @endforeach
 
                           </ul>
-                          <button class="btn btn-success btn-sm add2cart-notify form-control sp-btn" href="#">Book Now</button>
+                          <button class="btn btn-success btn-sm  form-control sp-btn" href="#">Book Now</button>
                       </form>
                   </div>
                 </div>

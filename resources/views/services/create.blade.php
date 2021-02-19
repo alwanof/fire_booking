@@ -42,6 +42,16 @@
                                 <option value="">{{__('Select Model')}}</option>
                             </select>
                         </div>
+                         <div class="form-group" >
+                            <label for="">{{__('Cancel Policy')}}</label>
+                            <select class="form-control" name="cancel_policy_id"  required>
+                                <option value="">{{__('Select Cancel Policy')}}</option>
+                                @foreach(\App\CancelPolicy::all() as $cancel_policy)
+                                <option value="{{$cancel_policy->id}}">{{$cancel_policy->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <div class="row">
                             <div class="form-group col-6">
                                 <label for="inputName">{{__('Price')}}</label>

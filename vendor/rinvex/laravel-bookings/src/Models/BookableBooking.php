@@ -134,12 +134,14 @@ abstract class BookableBooking extends Model
         //     $bookableAvailability->formula = $formula;
         //     $bookableAvailability->price = $price;
         // });
+
         static::validating(function (self $bookableAvailability) {
            if ($bookableAvailability->price === null) {
                $data = $bookableAvailability->calculatePrice(
                    $bookableAvailability->bookable,
                    $bookableAvailability->starts_at,
-                   $bookableAvailability->ends_at
+                   $bookableAvailability->ends_at,
+
                );
 
                $bookableAvailability->currency = 'EUR';
@@ -149,8 +151,6 @@ abstract class BookableBooking extends Model
                $bookableAvailability->total_paid = 0;
                $bookableAvailability->booking_key=Str::random(10);
                $bookableAvailability->user_id = $data['user_id'];
-               $bookableAvailability->asi = $data['asi'];
-               $bookableAvailability->guests = $data['guests'];
 
 
 
@@ -221,7 +221,9 @@ abstract class BookableBooking extends Model
             'total_units' => $totalUnits,
             'total_price' => $bookable->price,
             'user_id'=>$bookable->user_id,
+
         ];
+
     }
 
     /**

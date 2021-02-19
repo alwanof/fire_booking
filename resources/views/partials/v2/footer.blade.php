@@ -4,10 +4,8 @@
         <div class="suha-footer-nav h-100">
           <ul class="h-100 d-flex align-items-center justify-content-between pl-0">
             <li class="active"><a href="{{route('provider',$provider->username)}}"><i class="lni lni-home"></i>Home</a></li>
-            <li><a href="message.html"><i class="lni lni-life-ring"></i>Support</a></li>
-            <li><a href="cart.html"><i class="lni lni-shopping-basket"></i>Cart</a></li>
-            <li><a href="pages.html"><i class="lni lni-heart"></i>Pages</a></li>
-            <li><a href="settings.html"><i class="lni lni-cog"></i>Settings</a></li>
+            <li><a href="{{route('provider.provider_arguments',$provider->username)}}"><i class="lni lni-life-ring"></i>Arguments</a></li>
+            <li><a href="{{route('customer_front.reservation_form',$provider->username)}}"><i class="lni lni-ban"></i>Cancellation</a></li>
           </ul>
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\AgeGroupDiscount;
 use App\Category;
 use App\Service;
 use App\ServiceImage;
@@ -103,7 +104,10 @@ class ServiceController extends Controller
         $service->title = $request->title;
         $service->description = $request->description;
         $service->user_model_id = $request->user_model_id;
+        $service->cancel_policy_id = $request->cancel_policy_id;
         $service->price = $request->price;
+        $service->our_commission = auth()->user()->our_commission;
+        $service->hotel_commission = auth()->user()->hotel_commission;
         $service->discount_price = $discount;
         $service->amount = $request->amount;
         $service->duration = $request->duration;
@@ -155,6 +159,21 @@ class ServiceController extends Controller
         return $discount;
     }
 
+    function price_calculate(Service $service,Request $request){
+        $price_after_discount = 0;
+        foreach ($request->persons as $person){
+            $total = $service->price;
+            $discount_amount = AgeGroupDiscount::find($person['discount_id'])->discount_value;
+//           echo  AgeGroupDiscount::find($person['discount_id'])->discount_value . "<br>";
+//           selling price = 15 - (15 * (5 / 100)) = $14.25
+//            echo $service->price - (AgeGroupDiscount::find($person['discount_id'])->discount_value * (AgeGroupDiscount::find($person['discount_id'])->discount_value / 100)). "<br>";
+        $price_after_discount += ($total - ($total * ($discount_amount/100))) * $person['person_count'];
+
+        }
+                echo $price_after_discount;
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -200,12 +219,10 @@ class ServiceController extends Controller
 
     public function getTimes(Service $service, $date)
     {
-        $c_date = date('Y/m/d', $date);
-        $t_date = date('Y-m-d', $date);
+        $c_date = date('Y/m/d', ($date + 86400   ) );
+        $t_date = date('Y-m-d', ($date + 86400 )  );
         $times = $service->serviceTimes->where('date', $c_date);
         $amount = $service->amount;
-
-//        return $c_date;
         return view('services.timep', compact('service', 'times', 't_date', 'amount'));
     }
 
@@ -229,6 +246,9 @@ class ServiceController extends Controller
         $service->title = $request->title;
         $service->description = $request->description;
         $service->user_model_id = $request->user_model_id;
+        $service->cancel_policy_id = $request->cancel_policy_id;
+        $service->our_commission = auth()->user()->our_commission;
+        $service->hotel_commission = auth()->user()->hotel_commission;
         $service->price = $request->price;
         $service->discount_price = $discount;
         $service->amount = $request->amount;

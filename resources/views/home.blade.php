@@ -79,7 +79,20 @@
                 <div class="row">
                     <div class="col-md-12">
                         <i class="fa fa-dollar-sign" style="font-size: 2rem; color: #6f42c1"></i>
-                        <span style="font-size:1.5rem;font-weight: 900; color: #6f42c1">{{Auth()->user()->Bookings->where('status',1)->sum('price')}}</span>
+                        <span style="font-size:1.5rem;font-weight: 900; color: #6f42c1">{{Auth()->user()->Bookings->where('status',1)->sum('price')}} /
+                        @php
+                        $total = Auth()->user()->Bookings->where('status',1)->sum('price');
+                        $our_commission = Auth()->user()->our_commission;
+                        $hotel_commission = Auth()->user()->hotel_commission;
+                        $our_commission = ($our_commission / 100) * $total;
+                        $hotel_commission = ($hotel_commission / 100) * $total;
+                        $total = $total - ($hotel_commission + $our_commission);
+
+                        echo $total;
+
+                        @endphp
+
+                        </span>
                     </div>
 
                 </div>
@@ -102,6 +115,7 @@
                   <th>{{__('Customer Name')}}</th>
                   <th>{{__('Server Name')}}</th>
                   <th>{{__('Booked Date')}}</th>
+                  <th>{{__('Notes')}}</th>
               </tr>
               </thead>
               <tbody>
@@ -109,6 +123,7 @@
               <tr>
                   <td>{{$book->customer_type::find($book->customer_id)->name}}</td>
                   <td>{{$book->bookable_type::find($book->bookable_id)->title}}</td>
+                  <td>{{$book->notes}}</td>
                     @php
                        $d = explode(" ",$book->ends_at);
 
@@ -116,7 +131,8 @@
                   <td>Date : {{$d[0]}} <br> Time : {{$d[1]}}</td>
                   <td>
                       <div class="btn-group">
-                      <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" type="button">{{__('Completed')}} <i class="fa fa-check-circle"></i> </button>
+                          <a href="{{route('reservations.view',$book->id)}}" target="_blank" class="btn btn-warning"> <i class="fa fa-eye"></i> View </a>
+                          <button class="btn btn-success" data-toggle="modal" data-target="#exampleModal" type="button">{{__('Completed')}} <i class="fa fa-check-circle"></i> </button>
 
                       <button class="btn btn-danger" data-toggle="modal" data-target="#rejectModel" type="button">{{__('Rejected')}} <i class="fa fa-ban"></i> </button>
                       </div>
