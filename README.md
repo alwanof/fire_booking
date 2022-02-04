@@ -8,6 +8,10 @@
  - login with this super-admin@gmail.com as email
  - password as password
 
+![admin-panel-booking-system-laravel](fire-admin-panel.PNG)
+
+
+![add-model](fire-add-model.PNG)
 
 ## License
 
