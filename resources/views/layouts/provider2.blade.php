@@ -53,11 +53,11 @@
 							<!--   Core JS Files   -->
 							<!-- <script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script> -->
 							@yield('script')
-							<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
-							<script src="{{asset('assets/js/bootstrap.min.js')}}" type="text/javascript"></script>
-							<script src="{{asset('assets/js/jquery.bootstrap.wizard.js')}}" type="text/javascript"></script>
+                            <script src="/plugins/jquery/jquery.min.js"></script>
+							<script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+							<script src="/assets/js/jquery.bootstrap.wizard.js" type="text/javascript"></script>
 							<!--  Plugin for the Wizard -->
-							<script src="{{asset('assets/js/gsdk-bootstrap-wizard.js')}}"></script>
+							<script src="/assets/js/gsdk-bootstrap-wizard.js"></script>
 							<!--  More information about jquery.validate here: http://jqueryvalidation.org/	 -->
-							<script src="{{asset('assets/js/jquery.validate.min.js')}}"></script>
+							<script src="/assets/js/jquery.validate.min.js"></script>
 						</html>
