@@ -93,26 +93,26 @@ class ServiceController extends Controller
             'description' => ['required'],
             'user_model_id' => ['required'],
             'price' => ['required'],
-            'discount_price' => ['required'],
+//            'discount_price' => ['required'],
             'amount' => ['required'],
             'duration' => ['required'],
             'avatar' => ['required']
-
         ]);
         $discount = $this->calcDiscount($request->discount_price, $request->price);
         $service = new Service;
         $service->title = $request->title;
         $service->description = $request->description;
         $service->user_model_id = $request->user_model_id;
-        $service->cancel_policy_id = $request->cancel_policy_id;
+        // TODO saber refactor
+//        $service->cancel_policy_id = $request->cancel_policy_id;
         $service->price = $request->price;
-        $service->our_commission = auth()->user()->our_commission;
-        $service->hotel_commission = auth()->user()->hotel_commission;
-        $service->discount_price = $discount;
+//        $service->our_commission = auth()->user()->our_commission;
+//        $service->hotel_commission = auth()->user()->hotel_commission;
+//        $service->discount_price = $discount;
         $service->amount = $request->amount;
         $service->duration = $request->duration;
-        $service->additional_field_name = $request->additional_field_name;
-        $service->additional_field_options = json_encode(array_filter($request->additioal_field_options));
+//        $service->additional_field_name = $request->additional_field_name;
+//        $service->additional_field_options = json_encode(array_filter($request->additioal_field_options));
         $service->avatar = "test";
         if ($service->save()) {
             foreach ($request->times as $value) {
@@ -246,15 +246,16 @@ class ServiceController extends Controller
         $service->title = $request->title;
         $service->description = $request->description;
         $service->user_model_id = $request->user_model_id;
-        $service->cancel_policy_id = $request->cancel_policy_id;
-        $service->our_commission = auth()->user()->our_commission;
-        $service->hotel_commission = auth()->user()->hotel_commission;
+        // TODO saber refactor
+//        $service->cancel_policy_id = $request->cancel_policy_id;
+//        $service->our_commission = auth()->user()->our_commission;
+//        $service->hotel_commission = auth()->user()->hotel_commission;
         $service->price = $request->price;
-        $service->discount_price = $discount;
+//        $service->discount_price = $discount;
         $service->amount = $request->amount;
         $service->duration = $request->duration;
-        $service->additional_field_name = $request->additional_field_name;
-        $service->additional_field_options = json_encode(array_filter($request->additioal_field_options));
+//        $service->additional_field_name = $request->additional_field_name;
+//        $service->additional_field_options = json_encode(array_filter($request->additioal_field_options));
         $service->avatar = "test";
         if ($service->save()) {
             foreach ($request->times as $value) {
