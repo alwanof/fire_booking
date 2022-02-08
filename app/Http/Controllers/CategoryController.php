@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->description = $request->description;
         $category->video = $request->video;
-        $category->description_list = json_encode(array_filter($request->description_list));
+        $category->description_list = $request->description_list?json_encode(array_filter($request->description_list)):[];
         $category->avatar = "no avatar";
         if ($category->save()) {
             if ($request->hasfile('avatar')) {
@@ -132,7 +132,7 @@ class CategoryController extends Controller
         $category->title = $request->title;
         $category->description = $request->description;
         $category->video = $request->video;
-        $category->description_list = json_encode(array_filter($request->description_list));
+        $category->description_list = $request->description_list?json_encode(array_filter($request->description_list)):[];
         if ($request->hasfile('avatar')) {
 
             $a = 1;
