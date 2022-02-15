@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group" >
                             <label for="">{{__('Cancel Policy')}}</label>
-                            <select class="form-control" name="cancel_policy_id"  required>
+                            <select class="form-control" name="cancel_policy_id" >
                                 <option value="">{{__('Select Cancel Policy')}}</option>
                                 @foreach(\App\CancelPolicy::all() as $cancel_policy)
                                 <option value="{{$cancel_policy->id}}" @if($service->cancel_policy_id == $cancel_policy->id) selected @endif>{{$cancel_policy->name}}</option>
