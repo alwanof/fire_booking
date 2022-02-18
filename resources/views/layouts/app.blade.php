@@ -13,7 +13,7 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/checkout/">
 
     <!-- Bootstrap core CSS -->
-<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" >
+<link href="css/bootstrap.min.css" rel="stylesheet" >
 
 
 
@@ -34,7 +34,7 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="{{asset('css/form-validation.css')}}" rel="stylesheet">
+    <link href="css/form-validation.css')}}" rel="stylesheet">
   </head>
   <body class="bg-light">
     <div class="container">
@@ -96,7 +96,7 @@
 
 
 </div>
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="plugins/jquery/jquery.min.js')}}"></script>
 
       @yield('script')
       </body>

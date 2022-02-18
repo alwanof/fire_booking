@@ -10,13 +10,13 @@
 <!--     Fonts and icons     -->
 <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
 	<!-- CSS Files -->
-	<link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
-	<link href="{{asset('assets/css/gsdk-bootstrap-wizard.css')}}" rel="stylesheet" />
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
 	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<!-- <link href="{{asset('assets/css/demo.css')}}" rel="stylesheet" /> -->
+	<!-- <link href="assets/css/demo.css" rel="stylesheet" /> -->
 </head>
 <body>
-	<div class="image-container set-full-height" style="background-image: url('{{asset('assets/img/wizard-city.jpg')}}')">
+	<div class="image-container set-full-height" style="background-image: url('assets/img/wizard-city.jpg')">
 		<!--   Creative Tim Branding   -->
 		<a href="#">
 			<div class="logo-container">
@@ -51,7 +51,7 @@
 								</div>
 							</body>
 							<!--   Core JS Files   -->
-							<!-- <script src="{{asset('assets/js/jquery-2.2.4.min.js')}}" type="text/javascript"></script> -->
+							<!-- <script src="assets/js/jquery-2.2.4.min.js" type="text/javascript"></script> -->
 							@yield('script')
                             <script src="/plugins/jquery/jquery.min.js"></script>
 							<script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>

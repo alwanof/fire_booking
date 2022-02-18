@@ -21,7 +21,7 @@
                 </div>
                 <a href="/test/1">
                   <div class="card medium">
-                    <img class="card-image" src="{{asset('frontend/img/banner.png')}}" alt="">
+                    <img class="card-image" src="frontend/img/banner.png" alt="">
                     <div class="card-infos">
                       <h3 class="card-title">Ottoman Relics </h3>
                       <div class="row justify-content">
@@ -36,7 +36,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/tour.png')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/tour.png')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Istanbul Tours</div>
                           <div class="item-title">An enjoyable day in Istanbul's most important touristic places.</div>
@@ -54,7 +54,7 @@
                   <li>
                     <a class="link"  href="/pages/single" >
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/tour2.png')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/tour2.png')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Religious Tours</div>
                           <div class="item-title">Follow the cultural heritage of different religions in istanbul.</div>
@@ -72,7 +72,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/tour3.png')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/tour3.png')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Anatolian Tours</div>
                           <div class="item-title">Explore the places of Anatolia waiting to be discovered.</div>
@@ -145,7 +145,7 @@
                 <div class="two-columns-cards">
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-4.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-4.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">Nadal Wins at Roland Garros</h2>
                       </div>
@@ -153,7 +153,7 @@
                   </a>
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-8.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-8.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">Moto-Cross: The Champions Made the Show</h2>
                       </div>
@@ -161,7 +161,7 @@
                   </a>
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-17.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-17.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">Will Conor Return to the UFC Octagon?</h2>
                       </div>
@@ -169,7 +169,7 @@
                   </a>
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-18.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-18.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">Anna Gasser's Snowboard Win</h2>
                       </div>
@@ -186,7 +186,7 @@
                 <div class="two-columns-cards">
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-9.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-9.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">The Best Exotic Destinations</h2>
                       </div>
@@ -194,7 +194,7 @@
                   </a>
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-6.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-6.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">Top Sunglasses Models for This Summer</h2>
                       </div>
@@ -202,7 +202,7 @@
                   </a>
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-38.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-38.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">Join the Paris Body Painting Contest</h2>
                       </div>
@@ -210,7 +210,7 @@
                   </a>
                   <a href="/single/">
                     <div class="card">
-                      <img class="card-image" src="{{asset('frontend/img/thumb-39.jpg')}}" alt="">
+                      <img class="card-image" src="frontend/img/thumb-39.jpg')}}" alt="">
                       <div class="card-infos">
                         <h2 class="card-title">Nicki Minaj in Featuring with Drake!</h2>
                       </div>
@@ -243,7 +243,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-36.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-36.jpg')}}" alt="">
                         <div class="card-infos">
                           <h2 class="card-title">NASA Chooses Its Next Chief Scientist</h2>
                         </div>
@@ -253,7 +253,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-19.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-19.jpg')}}" alt="">
                         <div class="card-infos">
                           <h2 class="card-title">Jeffrey Campbell's New Shoes Models</h2>
                         </div>
@@ -263,7 +263,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-41.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-41.jpg')}}" alt="">
                         <div class="card-infos">
                           <h2 class="card-title">The Best Models of Sunglasses to Go out This Summer</h2>
                         </div>
@@ -273,7 +273,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-37.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-37.jpg')}}" alt="">
                         <div class="card-infos">
                           <h2 class="card-title">Soprano Announces His New Album</h2>
                         </div>
@@ -283,7 +283,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-40.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-40.jpg')}}" alt="">
                         <div class="card-infos">
                           <h2 class="card-title">Will Conor Return to the UFC Octagon?</h2>
                         </div>
@@ -300,7 +300,7 @@
                 <ul class="popular-authors">
                   <li>
                     <a href="/author/">
-                      <div class="author-image"><img src="{{asset('frontend/img/authors/author-3.jpg')}}" alt=""></div>
+                      <div class="author-image"><img src="frontend/img/authors/author-3.jpg')}}" alt=""></div>
                       <div class="author-infos">
                         <div class="author-name">Jess Roxana</div>
                         <div class="author-description">NBA & NFL Journalist</div>
@@ -310,7 +310,7 @@
                   </li>
                   <li>
                     <a href="/author/">
-                      <div class="author-image"><img src="{{asset('frontend/img/authors/author-2.jpg')}}" alt=""></div>
+                      <div class="author-image"><img src="frontend/img/authors/author-2.jpg')}}" alt=""></div>
                       <div class="author-infos">
                         <div class="author-name">Zorka Ivka</div>
                         <div class="author-description">Graphist and Webdesigner</div>
@@ -320,7 +320,7 @@
                   </li>
                   <li>
                     <a href="/author/">
-                      <div class="author-image"><img src="{{asset('frontend/img/authors/author-1.jpg')}}" alt=""></div>
+                      <div class="author-image"><img src="frontend/img/authors/author-1.jpg')}}" alt=""></div>
                       <div class="author-infos">
                         <div class="author-name">Camille Aline</div>
                         <div class="author-description">Fashion & Mode Worker</div>
@@ -338,7 +338,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-20.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-20.jpg')}}" alt="">
                       </div>
                       <div class="card-infos">
                         <h2 class="card-title">Best Clothes Showed on Fashion Week</h2>
@@ -348,7 +348,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-21.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-21.jpg')}}" alt="">
                       </div>
                       <div class="card-infos">
                         <h2 class="card-title">What Future for Milan Fashion Week?</h2>
@@ -358,7 +358,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-22.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-22.jpg')}}" alt="">
                       </div>
                       <div class="card-infos">
                         <h2 class="card-title">10 Unusual Jewels Spotted at Fashion Week</h2>
@@ -368,7 +368,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-23.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-23.jpg')}}" alt="">
                       </div>
                       <div class="card-infos">
                         <h2 class="card-title">Monica Bellucci Will Be Present This Year</h2>
@@ -378,7 +378,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-24.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-24.jpg')}}" alt="">
                       </div>
                       <div class="card-infos">
                         <h2 class="card-title">Milan Fashion Week: Giorgio Armani Show</h2>
@@ -396,7 +396,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/thumb-25.jpg')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/thumb-25.jpg')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Fashion</div>
                           <div class="item-title">The Best Diet for a Flatter Belly</div>
@@ -408,7 +408,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/thumb-26.jpg')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/thumb-26.jpg')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Science</div>
                           <div class="item-title">Here Are the Five Best Fruits of the Summer</div>
@@ -420,7 +420,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/thumb-27.jpg')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/thumb-27.jpg')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Beatles</div>
                           <div class="item-title">Were Vegetables Better Before?</div>
@@ -439,7 +439,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card medium">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-28.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-28.jpg')}}" alt="">
                         <div class="card-infos">
                           <div class="card-date"><i class="f7-icons">clock</i></i>2 days ago</div>
                           <h2 class="card-title">Edmond at the Royal Palace Theatre</h2>
@@ -450,7 +450,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card medium">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-42.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-42.jpg')}}" alt="">
                         <div class="card-infos">
                           <div class="card-date"><i class="f7-icons">clock</i></i>4 days ago</div>
                           <h2 class="card-title">Booba on Fire in His New Gotham Clip</h2>
@@ -461,7 +461,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card medium">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-29.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-29.jpg')}}" alt="">
                         <div class="card-infos">
                           <div class="card-date"><i class="f7-icons">clock</i></i>3 weeks ago</div>
                           <h2 class="card-title">15 Cheap Outing Ideas in London</h2>
@@ -472,7 +472,7 @@
                   <div class="swiper-slide">
                     <a href="#" data-href="/single/">
                       <div class="card medium">
-                        <img class="card-image" src="{{asset('frontend/img/thumb-30.jpg')}}" alt="">
+                        <img class="card-image" src="frontend/img/thumb-30.jpg')}}" alt="">
                         <div class="card-infos">
                           <div class="card-date"><i class="f7-icons">clock</i></i>1 month ago</div>
                           <h2 class="card-title">Ariana Grande Announces a New Fragrance</h2>
@@ -490,7 +490,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/thumb-31.jpg')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/thumb-31.jpg')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Fashion</div>
                           <div class="item-title">The Crocodile, Man's Best Friend?</div>
@@ -502,7 +502,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/thumb-32.jpg')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/thumb-32.jpg')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Science</div>
                           <div class="item-title">7 Accessories to Pack This Summer</div>
@@ -514,7 +514,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/thumb-33.jpg')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/thumb-33.jpg')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Beatles</div>
                           <div class="item-title">Mylene Farmer Will Unveil Her New Single on Friday</div>
@@ -526,7 +526,7 @@
                   <li>
                     <a href="/single/">
                       <div class="item-content">
-                        <div class="item-media"><img src="{{asset('frontend/img/thumb-34.jpg')}}" alt=""></div>
+                        <div class="item-media"><img src="frontend/img/thumb-34.jpg')}}" alt=""></div>
                         <div class="item-inner">
                           <div class="item-subtitle">Fashion</div>
                           <div class="item-title">Holidays Abroad: Leave Reassured!</div>
@@ -613,7 +613,7 @@
                     <li>
                       <a href="/single/">
                         <div class="item-content">
-                          <div class="item-media"><img src="{{asset('frontend/img/thumb-11.jpg')}}" alt=""></div>
+                          <div class="item-media"><img src="frontend/img/thumb-11.jpg')}}" alt=""></div>
                           <div class="item-inner">
                             <div class="item-subtitle">Fashion</div>
                             <div class="item-title">The 6th Edition of the Body Painting Contest</div>
@@ -625,11 +625,11 @@
                     <li>
                       <a href="/single/">
                         <div class="item-content">
-                          <div class="item-media"><img src="{{asset('frontend/img/thumb-12.jpg')}}" alt=""></div>
+                          <div class="item-media"><img src="frontend/img/thumb-12.jpg')}}" alt=""></div>
                           <div class="item-inner">
                             <div class="item-subtitle">Photography</div>
                             <div class="item-title">20 Photography Tips for Taking Pictures</div>
-                            <div class="item-subtitle bottom-subtitle"><img src="{{asset('frontend/img/authors/author-3.jpg')}}" alt="">Jess Roxana</div>
+                            <div class="item-subtitle bottom-subtitle"><img src="frontend/img/authors/author-3.jpg')}}" alt="">Jess Roxana</div>
                           </div>
                         </div>
                       </a>
@@ -637,11 +637,11 @@
                     <li>
                       <a href="/single/">
                         <div class="item-content">
-                          <div class="item-media"><img src="{{asset('frontend/img/thumb-13.jpg')}}" alt=""></div>
+                          <div class="item-media"><img src="frontend/img/thumb-13.jpg')}}" alt=""></div>
                           <div class="item-inner">
                             <div class="item-subtitle">Beatles</div>
                             <div class="item-title">Tottenham: NFL Turf Is in Place!</div>
-                            <div class="item-subtitle bottom-subtitle"><img src="{{asset('frontend/img/authors/author-1.jpg')}}" alt="">Camille Aline</div>
+                            <div class="item-subtitle bottom-subtitle"><img src="frontend/img/authors/author-1.jpg')}}" alt="">Camille Aline</div>
                           </div>
                         </div>
                       </a>
@@ -649,7 +649,7 @@
                     <li>
                       <a href="/single/">
                         <div class="item-content">
-                          <div class="item-media"><img src="{{asset('frontend/img/thumb-31.jpg')}}" alt=""></div>
+                          <div class="item-media"><img src="frontend/img/thumb-31.jpg')}}" alt=""></div>
                           <div class="item-inner">
                             <div class="item-subtitle">Fashion</div>
                             <div class="item-title">The Crocodile, Man's Best Friend?</div>
@@ -665,7 +665,7 @@
                           <div class="item-inner">
                             <div class="item-subtitle">Science</div>
                             <div class="item-title">7 Accessories to Pack This Summer</div>
-                            <div class="item-subtitle bottom-subtitle"><img src="{{asset('frontend/img/authors/author-3.jpg')}}" alt="">Jess Roxana</div>
+                            <div class="item-subtitle bottom-subtitle"><img src="frontend/img/authors/author-3.jpg')}}" alt="">Jess Roxana</div>
                           </div>
                         </div>
                       </a>

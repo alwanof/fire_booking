@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>Yui</title>
-    <link rel="stylesheet" href="{{asset('frontend/css/framework7.bundle.min.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/css/framework7-icons.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/css/custom.css')}}">
+    <link rel="stylesheet" href="frontend/css/framework7.bundle.min.css">
+    <link rel="stylesheet" href="frontend/css/framework7-icons.css">
+    <link rel="stylesheet" href="frontend/css/style.css">
+    <link rel="stylesheet" href="frontend/css/custom.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   <script>
   function initFreshChat() {
@@ -55,8 +55,8 @@
 
            </div>
     </div>
-    <script src="{{asset('frontend/js/framework7.bundle.min.js')}}"></script>
-    <script src="{{asset('frontend/js/app.js')}}"></script>
+    <script src="frontend/js/framework7.bundle.min.js')}}"></script>
+    <script src="frontend/js/app.js')}}"></script>
   </body>
 </html>
 

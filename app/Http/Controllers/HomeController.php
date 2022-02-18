@@ -49,8 +49,8 @@ class HomeController extends Controller
     {
 
         $provider = User::where('username', $username)->first();
-        $models = $provider->UserModels;
-        $categories = $provider->Categories;
+        $models = $provider->UserModels??"";
+        $categories = $provider->Categories??"";
         return view('v2.index', compact('models', 'provider', 'username', 'categories'));
 
 

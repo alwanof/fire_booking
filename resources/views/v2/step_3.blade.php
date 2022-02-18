@@ -1,7 +1,7 @@
 @extends('layouts.v2')
 @section('style')
 
-    <link rel="stylesheet" href="{{asset('plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css')}}">
+    <link rel="stylesheet" href="plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
     <style>
         input[type="number"] {
   -webkit-appearance: textfield;
@@ -178,8 +178,8 @@ input[type=number]::-webkit-outer-spin-button {
 @endsection
 @section('scripts')
 
-    <script src="{{asset('plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js')}}"></script>
-      <script src="{{asset('frontend/js/number-input.js')}}"></script>
+    <script src="plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+      <script src="frontend/js/number-input.js"></script>
   <script type="text/javascript">
       price_calculate();
                 function price_calculate() {

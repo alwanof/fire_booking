@@ -76,6 +76,8 @@ Route::resources([
     'cancel_policy' => CancelPolicyController::class,
     'arguments' => ArgumentController::class,
 ]);
+
+
 Route::get('/category/duplicate/{category}', 'CategoryController@duplicate')->name('category.duplicate');
 Route::post('/category/getModels/', 'CategoryController@getModels')->name('category.getModels');
 Route::get('/model/duplicate/{userModel}', 'UserModelController@duplicate')->name('model.duplicate');
