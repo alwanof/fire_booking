@@ -1,7 +1,7 @@
 @extends('layouts.v2')
 @section('style')
 
-    <link rel="stylesheet" href="plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
     <style>
         input[type="number"] {
   -webkit-appearance: textfield;
@@ -85,7 +85,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <br>
             <legend class="text-center">{{__('Almost Done ..')}} </legend>
                 <form action="{{route('reservation_form',[$provider->id,$service->id])}}" method="POST">
-                @if(isset($provider->Settings->where('configuration_id',8)->first()->value) && $provider->Settings->where('configuration_id',8)->first()->value == 'true')
+                @if(isset($provider->Settings->where('configuration_id',1)->first()->value) && $provider->Settings->where('configuration_id',1)->first()->value == 'true')
 
                 @foreach(\App\AgeGroupDiscount::where('user_id',$provider->id)->get() as $ageGroupDiscount)
 
@@ -164,7 +164,7 @@ input[type=number]::-webkit-outer-spin-button {
             <div class="rating-review-content">
                 <h1 class="text-center">Total Price: <span id="total_price" class="">{{price_format_front($service->price,$provider)}}</span></h1>
                 <br>
-{{--                <input type="hidden" name="age_group_discount" id="age_group_discount" value="{{$provider->Settings->where('configuration_id',8)->first()->value}}">--}}
+{{--                <input type="hidden" name="age_group_discount" id="age_group_discount" value="{{$provider->Settings->where('configuration_id',1)->first()->value}}">--}}
                     <input type="hidden" name="date" id="selected_date">
                     <input type="hidden" name="time" id="selected_time">
                     <input type="hidden" name="total_price" id="total_price_input">
@@ -178,8 +178,8 @@ input[type=number]::-webkit-outer-spin-button {
 @endsection
 @section('scripts')
 
-    <script src="plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
-      <script src="frontend/js/number-input.js"></script>
+    <script src="/plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+      <script src="/frontend/js/number-input.js"></script>
   <script type="text/javascript">
       price_calculate();
                 function price_calculate() {

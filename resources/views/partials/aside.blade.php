@@ -165,7 +165,7 @@
                     <p>{{__('Custom Fields')}}</p>
                   </a>
                 </li>
-              @if(auth()->user()->Settings()->where('configuration_id',8)->first())
+              @if(auth()->user()->Settings()->where('configuration_id',1)->first())
               <li class="nav-item">
                   <a href="{{route('age_group_discount.index')}}" class="nav-link ">
                     <i class="nav-icon fas fa-info"></i>
