@@ -25,10 +25,14 @@
             <form method="post" enctype="multipart/form-data" action="{{route('users.update', $user)}}">
             {{ csrf_field() }}
             {{ method_field('patch') }}
-          <div class="form-group">
-            <label for="inputName">{{__('Full Name')}}</label>
-            <input type="text" name="name" class="form-control" value="{{$user->name}}">
-          </div>
+                <div class="form-group">
+                    <label for="inputName">{{__('Full Name')}}</label>
+                    <input type="text" name="name" class="form-control" value="{{$user->name}}">
+                </div>
+                <div class="form-group">
+                    <label for="inputName">{{__('username')}}</label>
+                    <input type="text" name="username" class="form-control" value="{{$user->username}}">
+                </div>
           <div class="form-group">
             <label for="inputName">{{__('Email')}}</label>
             <input type="text" name="email" class="form-control" disabled value="{{$user->email}}">
@@ -57,13 +61,13 @@
           </div>
         </form>
         </div>
-       
-            
-         
+
+
+
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
     </div>
-   
+
   </div>
 @endsection
