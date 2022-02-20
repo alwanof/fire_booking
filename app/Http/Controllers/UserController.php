@@ -89,7 +89,7 @@ class UserController extends Controller
             'our_commission'=>$request->our_commission,
             'password' => Hash::make($request->password),
             'avatar' => '/uploads/avatars/' . $filename,
-            'username' => $this->slugify($request->name),
+            'username' => $this->slugify($request->username),
         ]);
 
         if ($user) {
