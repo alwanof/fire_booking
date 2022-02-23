@@ -58,9 +58,9 @@
                 </div>
             </form>
 
-{{--            <p class="mb-0">--}}
-{{--                <a href="{{ route('register') }}" class="text-center">{{__('Register a new membership')}}</a>--}}
-{{--            </p>--}}
+            <p class="mb-0">
+                <a href="{{ route('register') }}" class="text-center">{{__('Register a new membership')}}</a>
+            </p>
         </div>
     </div>
 </div>

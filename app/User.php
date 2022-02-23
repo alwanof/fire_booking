@@ -21,7 +21,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','username', 'email', 'password', 'avatar','username','hotel_commission','our_commission'
+        'name', 'username', 'email', 'password', 'avatar', 'hotel_commission', 'our_commission'
     ];
 
     /**
@@ -45,30 +45,41 @@ class User extends Authenticatable
 
     public function UserModels()
     {
-      return $this->hasMany(UserModel::class);
+        return $this->hasMany(UserModel::class);
     }
+
     public function Categories()
     {
-      return $this->hasMany(Category::class);
+        return $this->hasMany(Category::class);
     }
-    public function Bookings (){
+
+    public function Bookings()
+    {
         return $this->hasMany(Booking::class);
     }
-    public function Settings (){
+
+    public function Settings()
+    {
         return $this->hasMany(Setting::class);
     }
 
-    public function CustomFields(){
+    public function CustomFields()
+    {
         return $this->hasMany(CustomField::class);
     }
-    public function Services () {
+
+    public function Services()
+    {
         return $this->hasMany(Service::class);
     }
+
     public function GetAvilableConfig()
     {
         return $this->roles->first()->configurations()->get();
     }
-    public function Arguments(){
+
+    public function Arguments()
+    {
         return $this->hasOne(Argument::class);
     }
 }

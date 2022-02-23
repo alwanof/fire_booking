@@ -65,7 +65,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            @if(\App\Setting::where('configuration_id',8)->first())
+                            @if(\App\Setting::where('configuration_id',1)->first())
                             <div class="form-group col-6">
                                 <label for="">Is Age Group Discount Acitve</label>
                                 <select name="is_age_group_active" class="form-control" id="is_age_group_active">

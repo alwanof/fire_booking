@@ -18,7 +18,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('provider.css')}}">
+    <link rel="stylesheet" href="provider.css">
     @yield('style')
 </head>
 <body>
@@ -68,7 +68,7 @@
         </div>
     </div>
 </main>
-<script src="{{asset('plugins/jquery/jquery.min.js')}}"></script>
+<script src="plugins/jquery/jquery.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
@@ -76,7 +76,7 @@
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-<script src="{{asset('js/js_slider.js')}}"></script>
+<script src="js/js_slider.js')}}"></script>
 @yield('script')
 <script>
     $(".models_slider").diyslider(); // this is all you need!
