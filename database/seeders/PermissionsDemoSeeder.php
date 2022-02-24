@@ -1,5 +1,7 @@
 <?php
 
+//namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -33,6 +35,6 @@ class PermissionsDemoSeeder extends Seeder
         $role2->givePermissionTo('unpublish articles');
 
         $role3 = Role::create(['name' => 'super-admin']);
-        
+
     }
 }

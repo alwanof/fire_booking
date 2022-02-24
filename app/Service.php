@@ -11,6 +11,7 @@ class Service extends Model
 {
     use Multitenantable;
     use Bookable;
+
     public function User ()
     {
         return $this->belongsTo(User::class);
@@ -80,8 +81,13 @@ class Service extends Model
             return 0;
         }
     }
+
     public function CancelPolicy(){
         return $this->belongsTo(CancelPolicy::class);
     }
 
+    public function getUnitAttribute()
+    {
+        return 'day';
+    }
 }

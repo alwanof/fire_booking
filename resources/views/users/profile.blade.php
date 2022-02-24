@@ -25,6 +25,15 @@
             <form method="post" enctype="multipart/form-data" action="{{route('users.update', $user)}}">
             {{ csrf_field() }}
             {{ method_field('patch') }}
+                @if ($user->username)
+                <div class="form-group">
+                    <label for="inputName">{{__('YOUR LINK for your customer')}}</label> <a href="/provider/{{$user->username}}/">link </a>
+                </div>
+                @else
+                    <p style="color:red">
+                        please set a username for your profile to appear a link for booking
+                    </p>
+                @endif
                 <div class="form-group">
                     <label for="inputName">{{__('Full Name')}}</label>
                     <input type="text" name="name" class="form-control" value="{{$user->name}}">
