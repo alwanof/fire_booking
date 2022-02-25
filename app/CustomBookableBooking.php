@@ -2,16 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Rinvex\Bookings\Models;
+namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Rinvex\Bookings\Models\BookableBooking;
 use Rinvex\Support\Traits\ValidatingTrait;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Spatie\SchemalessAttributes\SchemalessAttributes;
 use Illuminate\Support\Str;
-abstract class BookableBooking extends Model
+
+abstract class CustomBookableBooking extends BookableBooking
 {
     use ValidatingTrait;
 
