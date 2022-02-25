@@ -40,4 +40,16 @@ function getPrices( $models){
         return array(0,0);
     }
 }
+
+/**
+ * @param $service_id
+ * @param $date
+ * @return mixed
+ */
+function timeAvailability($service_id, $date)
+{
+    $serviceBookingsOfBookable = \App\Service::find($service_id)->bookings->where('starts_at',$date)->count();
+    return $serviceBookingsOfBookable;
+}
+
  ?>
