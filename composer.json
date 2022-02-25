@@ -42,7 +42,6 @@
     },
     "autoload": {
         "classmap": [
-            "app/Models",
             "database",
             "database/seeders",
             "database/factories"
