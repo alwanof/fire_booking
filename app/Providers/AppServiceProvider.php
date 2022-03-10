@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $loader = AliasLoader::getInstance();
+        $loader->alias( 'App\CustomBookableBooking','Rinvex\Bookings\Models\BookableBooking');
     }
 
     /**

@@ -33,6 +33,7 @@ class UserController extends Controller
     {
 
         $user->name = $request->name;
+        $user->username = $request->username;
         if ($request->password != null) {
             $user->password = bcrypt($request->password);
         }
