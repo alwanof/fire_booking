@@ -40,7 +40,7 @@
                         </div>
                         <div class="form-group" >
                             <label for="">{{__('Cancel Policy')}}</label>
-                            <select class="form-control" name="cancel_policy_id"  required>
+                            <select class="form-control" name="cancel_policy_id" >
                                 <option value="">{{__('Select Cancel Policy')}}</option>
                                 @foreach(\App\CancelPolicy::all() as $cancel_policy)
                                 <option value="{{$cancel_policy->id}}" @if($service->cancel_policy_id == $cancel_policy->id) selected @endif>{{$cancel_policy->name}}</option>
@@ -66,7 +66,7 @@
                                    required>
                         </div>
                         <div class="row">
-                            @if(\App\Setting::where('configuration_id',8)->first())
+                            @if(\App\Setting::where('configuration_id',1)->first())
                             <div class="form-group col-6">
                                 <label for="">Is Age Group Discount Acitve</label>
                                 <select name="is_age_group_active" class="form-control" id="is_age_group_active">

@@ -37,6 +37,8 @@
                             @endforeach
                                                     @endif
                             {{__('Notes')}}: <span>{{$booking->notes}}</span></p>
+                        <p class="float-left sp-text">
+                            {{__('booking key')}}: <span>{{$booking->booking_key}}</span></p>
                     </div>
                     <a class="btn btn-primary mt-3" href="{{route('provider',$provider->username)}}">{{__('Back To Home')}}</a>
                 </div>

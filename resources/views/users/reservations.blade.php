@@ -41,6 +41,7 @@
                                 <td>{{$reservation->price}}</td>
                                 <td>{{$reservation->ends_at}}</td>
                                 <td>
+{{--                                    @dd($reservation->status)--}}
                                     @if($reservation->status == 0)
                                         <span class="badge badge-warning">Pending</span>
                                     @elseif($reservation->status == 1)

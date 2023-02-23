@@ -18,16 +18,17 @@
           <div class="card-body table-responsive p-0">
               <table class="table table-bordered">
                   <tr>
+{{--                      @dd($book,$book->bookable,$book->customer)--}}
                       <th>{{__('Customer Name')}}</th>
-                      <td>{{$book->customer_type::find($book->customer_id)->name}}</td>
+                      <td>{{$book->customer->name}}<a href="/customers/{{$book->customer->id}}/edit"> > link to edit</a></td>
                       <th>{{__('Customer Email')}}</th>
-                      <td>{{$book->customer_type::find($book->customer_id)->email}}</td>
+                      <td>{{$book->customer->email}}</td>
                   </tr>
                   <tr>
                       <th>{{__('Booked Date')}}</th>
                       <td>{{$book->ends_at}}</td>
                       <th>{{__('Booked Service')}}</th>
-                      <td>{{$book->bookable_type::find($book->bookable_id)->title}}</td>
+                      <td>{{$book->bookable->title}}<a href="/services/{{$book->bookable->id}}/edit"> > link to edit</a></td>
                   </tr>
                    <tr>
                       <th>{{__('Booked Count')}}</th>

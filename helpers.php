@@ -178,11 +178,6 @@ if (! function_exists('back')) {
         return app('redirect')->back($status, $headers, $fallback);
     }
 }
-function timeAvalibality($service_id,$date)
-{
-  $serviceBookingsOfBookable = \App\Service::find($service_id)->bookings->where('starts_at',$date)->count();
-  return $serviceBookingsOfBookable;
-}
 
 
 if (! function_exists('base_path')) {

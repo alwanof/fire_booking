@@ -53,60 +53,61 @@
                   <hr>
                   @for($i =1; $i <= $person; $i++)
                   <legend>{{$i}}. Person</legend>
-                  @foreach($provider->CustomFields as $field)
-                <div class="single-profile-data d-flex align-items-center justify-content-between">
-                  <div class="title d-flex align-items-center"><i class="lni lni-user"></i><span>{{$field->input_name}}</span></div>
-                  <div class="data-content">
-                    <input type="text" required placeholder="{{$field->input_name}}" name="custom[{{$i}}][{{$field->input_name}}]" class="form-control">
+{{--                  @dd($provider)--}}
+{{--                  @foreach($provider->CustomFields as $field)--}}
+{{--                <div class="single-profile-data d-flex align-items-center justify-content-between">--}}
+{{--                  <div class="title d-flex align-items-center"><i class="lni lni-user"></i><span>{{$field->input_name}}</span></div>--}}
+{{--                  <div class="data-content">--}}
+{{--                    <input type="text" required placeholder="{{$field->input_name}}" name="custom[{{$i}}][{{$field->input_name}}]" class="form-control">--}}
+{{--                  </div>--}}
+{{--                </div>--}}
+{{--                      @endforeach--}}
+    {{-- todo saber comment these lines--}}
+                      <hr>
+                      @endfor
+                      @if($service->additional_field_name != null)
+                    <div class="single-profile-data d-flex align-items-center justify-content-between">
+                        <div class="title d-flex align-items-center">
+                            <i class="lni lni-licencse"></i>
+                            <span>{{$service->additional_field_name}}</span>
+                        </div>
+                        <div class="data-content">
+                            <select name="additional_service_info[{{$service->additional_field_name}}]" class="form-control" id="">
+                                <option value="">Select Option</option>
+                                @foreach(json_decode($service->additional_field_options) as $option)
+                                <option value="{{$option}}">{{$option}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                      </div>
+                        @endif
+                    <div class="form-group">
+                        <textarea name="notes" class="form-control" id="" placeholder="You can type your special request…" cols="30" rows="4"></textarea>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="checkbox" class="checkbox">
+                            <input type="checkbox" class="checkbox" required name="" id="">
+                            I accept <a href="#">aggrement</a> and <a href="#">privacy policy</a>.
+                        </label>
+                    </div>
+
                   </div>
                 </div>
-                      @endforeach
-
-                  <hr>
-                  @endfor
-                  @if($service->additional_field_name != null)
-                <div class="single-profile-data d-flex align-items-center justify-content-between">
-                    <div class="title d-flex align-items-center">
-                        <i class="lni lni-licencse"></i>
-                        <span>{{$service->additional_field_name}}</span>
-                    </div>
-                    <div class="data-content">
-                        <select name="additional_service_info[{{$service->additional_field_name}}]" class="form-control" id="">
-                            <option value="">Select Option</option>
-                            @foreach(json_decode($service->additional_field_options) as $option)
-                            <option value="{{$option}}">{{$option}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                  </div>
-                    @endif
-                <div class="form-group">
-                    <textarea name="notes" class="form-control" id="" placeholder="You can type your special request…" cols="30" rows="4"></textarea>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="checkbox" class="checkbox">
-                        <input type="checkbox" class="checkbox" required name="" id="">
-                        I accept <a href="#">aggrement</a> and <a href="#">privacy policy</a>.
-                    </label>
-                </div>
-
               </div>
+
+              <!-- Cart Amount Area-->
+              <div class="card cart-amount-area">
+                <div class="card-body d-flex align-items-center justify-content-between">
+                  <h5 class="total-price mb-0 m-1">$<span class="">{{$request->total_price}}</span></h5>
+
+
+                      <button type="submit" class="btn btn-danger form-control  sp-btn">COMPLETE</button>
+
+                </div>
+              </div>
+                </form>
             </div>
           </div>
-
-          <!-- Cart Amount Area-->
-          <div class="card cart-amount-area">
-            <div class="card-body d-flex align-items-center justify-content-between">
-              <h5 class="total-price mb-0 m-1">$<span class="">{{$request->total_price}}</span></h5>
-
-
-                  <button type="submit" class="btn btn-danger form-control  sp-btn">COMPLETE</button>
-
-            </div>
-          </div>
-            </form>
         </div>
-      </div>
-    </div>
-@endsection
+    @endsection

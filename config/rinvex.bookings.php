@@ -14,6 +14,7 @@ return [
         'bookable_availabilities' => 'bookable_availabilities',
         'ticketable_bookings' => 'ticketable_bookings',
         'ticketable_tickets' => 'ticketable_tickets',
+        'custom_fields' => 'custom_fields',
     ],
 
 ];

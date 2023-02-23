@@ -8,7 +8,7 @@
                     <p class="card-text">Qr Code</p>
                 </div>
                 <div class="card-body">
-                    {!! QrCode::color(23,162,184)->size(300)->generate("https://2urkeybooking.com/provider/".Auth()->user()->username); !!}
+{{--                    {!! QrCode::color(23,162,184)->size(300)->generate("https://2urkeybooking.com/provider/".Auth()->user()->username); !!}--}}
                 </div>
             </div>
         </div>
@@ -69,7 +69,8 @@
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card card-purple card-outline">
+        <div class="card card-pu
+        rple card-outline">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
@@ -114,19 +115,19 @@
               <tr>
                   <th>{{__('Customer Name')}}</th>
                   <th>{{__('Server Name')}}</th>
-                  <th>{{__('Booked Date')}}</th>
                   <th>{{__('Notes')}}</th>
+                  <th>{{__('Booked Date')}}</th>
               </tr>
               </thead>
               <tbody>
               @foreach(Auth()->user()->Bookings->where('status',0)->take(10) as $book)
               <tr>
-                  <td>{{$book->customer_type::find($book->customer_id)->name}}</td>
-                  <td>{{$book->bookable_type::find($book->bookable_id)->title}}</td>
+                  <td>{{$book->customer->name}}</td>
+{{--                  @dd($book->bookable_type)--}}
+                  <td>{{$book->bookable->title}}</td>
                   <td>{{$book->notes}}</td>
                     @php
                        $d = explode(" ",$book->ends_at);
-
                     @endphp
                   <td>Date : {{$d[0]}} <br> Time : {{$d[1]}}</td>
                   <td>

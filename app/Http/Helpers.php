@@ -5,7 +5,7 @@ function price_format ($price,$service){
     $configuration_id = 7; //currency Config id
 
     if ($provider->Settings->where('configuration_id',$configuration_id)->first()){
-        $currency = $provider->Settings->where('configuration_id',7)->first()->value;
+        $currency = $provider->Settings->where('configuration_id',1)->first()->value;
        return $price . " ".$currency;
     }else{
         $currency = \App\Configuration::find($configuration_id)->value;
@@ -15,10 +15,10 @@ function price_format ($price,$service){
 }
 function price_format_front ($price,\App\User $provider){
 
-    $configuration_id = 7; //currency Config id
+    $configuration_id = 1; //currency Config id
 
     if ($provider->Settings->where('configuration_id',$configuration_id)->first()){
-        $currency = $provider->Settings->where('configuration_id',7)->first()->value;
+        $currency = $provider->Settings->where('configuration_id',1)->first()->value;
        return $price . " ".$currency;
     }else{
         $currency = \App\Configuration::find($configuration_id)->value;
@@ -40,4 +40,16 @@ function getPrices( $models){
         return array(0,0);
     }
 }
+
+/**
+ * @param $service_id
+ * @param $date
+ * @return mixed
+ */
+function timeAvailability($service_id, $date)
+{
+    $serviceBookingsOfBookable = \App\Service::find($service_id)->bookings->where('starts_at',$date)->count();
+    return $serviceBookingsOfBookable;
+}
+
  ?>
